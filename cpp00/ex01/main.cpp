@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 15:03:10 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/19 14:23:13 by clorcery         ###   ########.fr       */
+/*   Created: 2023/01/19 11:27:40 by clorcery          #+#    #+#             */
+/*   Updated: 2023/01/21 19:07:52 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Phonebook.hpp"
 
-int	main(int argc, char **argv)
+int	main()
 {
-	int size; 
+	Phonebook	phoneBook;
+	std::string str;
 
-	if (argc < 2)
+	while (true)
 	{
-		std::cout << "LOUD AND UNBEARABLE FEEDBACK NOISE" << std::endl;
-		return (1);
+		std::cout << ">enter a command (ADD, SEARCH or EXIT) : ";
+		if ( getline(std::cin, str) == NULL)
+		{
+			std::cout << std::endl;
+			exit(0);
+		}
+		if (str == "ADD")
+		{
+			phoneBook.get_data();
+		}
+		else if (str == "SEARCH")
+		{
+			std::cout << "ok search" << std::endl;
+		}
+		else if (str == "EXIT")
+			exit(0);
 	}
-	for(int i = 1; argv[i] ; i++)
-	{
-		std::string str(argv[i]);
-		size = str.size();
-		for(int j = 0 ; j < size ; j++)
-			std::cout << (char)(std::toupper(str[j]));
-	}
-	std::cout << std::endl;
 	return (0);
 }
