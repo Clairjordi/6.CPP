@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:44:51 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/22 17:36:34 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:31:38 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	Phonebook::index_is_valid(std::string str_index)
 		std::cout << "Enter a valid index" << std::endl;
 		return (1);
 	}
-	if (str_index[0] - '0' > _nb_contact)
+	if (str_index[0] - '0' > _nb_contact - 1)
 	{
 		std::cout << "Enter an existing index" << std::endl;
 		return (1);
