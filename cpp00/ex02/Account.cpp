@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:14:44 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/23 18:22:54 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/04 10:23:46 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ Account::~Account()
 {
 	_displayTimestamp();
 	std::cout <<"index:" << _accountIndex << ";";
-	std::cout << "amount:" << _amount;
+	std::cout << "amount:" << _amount << ";";
 	std::cout << "closed" << std::endl;
 
 }

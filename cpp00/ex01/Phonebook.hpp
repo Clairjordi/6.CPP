@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:48:57 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/22 17:07:24 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:04:08 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ class Phonebook
 		void get_data();
 		void display_phonebook();
 		void info_contact();
-		int	index_is_valid(std::string str_index);
+
 	private:
+		int	 	index_is_valid(std::string str_index);
 		Contact	_contact[8];
 		int		_index;
 		int		_nb_contact;
