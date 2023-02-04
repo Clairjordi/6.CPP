@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 10:44:23 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/04 11:47:47 by clorcery         ###   ########.fr       */
+/*   Created: 2023/02/04 10:26:39 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/04 11:58:54 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name)
+int	main(void)
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
+	Zombie* zombie;
+	zombie = newZombie("Cl");
+	randomChump("Bob");
+
+	delete (zombie);
+	return (0);	
 }

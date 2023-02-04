@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 10:44:23 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/04 11:47:47 by clorcery         ###   ########.fr       */
+/*   Created: 2023/02/04 14:37:37 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/04 16:48:03 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "HumanB.hpp"
 
-#include "Zombie.hpp"
 
-Zombie* newZombie(std::string name)
+//faire la gestion d'erreur pour une  Weapon vide
+
+HumanB::HumanB(std::string name) : _name(name)
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
+
+}
+
+void HumanB::setWeapon(Weapon &type)
+{
+	this->_weaponType = &type;
+}
+
+void HumanB::attack()
+{
+	
+	std::cout << this->_name << " attacks with their " << this->_weaponType->getType() << std::endl;
+}
+
+HumanB::~HumanB()
+{
+
 }

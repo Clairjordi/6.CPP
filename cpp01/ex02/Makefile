@@ -6,14 +6,11 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/02/04 13:32:47 by clorcery         ###   ########.fr        #
+#    Updated: 2023/02/04 13:56:41 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = Zombie.cpp \
-	   newZombie.cpp \
-	   randomChump.cpp \
-	   main.cpp
+SRCS = main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

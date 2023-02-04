@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 10:44:23 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/04 11:47:47 by clorcery         ###   ########.fr       */
+/*   Created: 2023/02/04 14:09:51 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/04 15:51:45 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WEAPON_CPP
+# define WEAPON_CPP
 
-#include "Zombie.hpp"
+# include <iostream>
+# include <string>
 
-Zombie* newZombie(std::string name)
+class Weapon
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
-}
+	public:
+		Weapon(std::string type);
+		~Weapon();
+		const std::string& getType() const;
+		void setType(std::string type);
+
+	private:
+		std::string _type;
+};
+
+#endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/04 10:44:28 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/04 11:54:09 by clorcery         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
@@ -8,13 +20,15 @@
 class Zombie 
 {
 	public:
-		Zombie();
+		Zombie(std::string name);
 		~Zombie();
-		void getname();
-		void announce(void);
 
 	private:
+		void announce(void);
 		std::string _name;
-}
+};
+
+Zombie* newZombie(std::string name);
+void randomChump(std::string name);
 
 #endif
