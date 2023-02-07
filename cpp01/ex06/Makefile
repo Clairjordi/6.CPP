@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/02/06 13:12:11 by clorcery         ###   ########.fr        #
+#    Updated: 2023/02/06 16:54:32 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = main.cpp \
 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME = a.out 
+NAME = HarlFilter 
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 

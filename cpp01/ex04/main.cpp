@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:54:15 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/05 18:01:42 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:07:02 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int main(int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		std::cerr << "" << std::endl;
+		std::cerr << "Please enter 3 arguments" << std::endl;
 		return (1);
 	}
-
 
 	std::ifstream ifs(argv[1]);
 	if (!ifs.is_open())

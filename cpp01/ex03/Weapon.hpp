@@ -6,12 +6,12 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 14:09:51 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/04 15:51:45 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:05:53 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_CPP
-# define WEAPON_CPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 # include <iostream>
 # include <string>

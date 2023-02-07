@@ -15,7 +15,7 @@
 int	main(void)
 {
 	Zombie* zombie;
-	zombie = newZombie("Cl");
+	zombie = newZombie("Jim");
 	randomChump("Bob");
 
 	delete (zombie);

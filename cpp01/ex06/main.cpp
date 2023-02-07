@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 10:44:28 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/06 18:37:36 by clorcery         ###   ########.fr       */
+/*   Created: 2023/02/05 18:11:01 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/06 18:01:00 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Harl.hpp"
 
-# include <iostream>
-# include <string>
-
-class Zombie 
+int main(int argc, char **argv)
 {
-	public:
-		Zombie();
-		~Zombie();
-		void setName(std::string name);
-		void announce(void);
+	if (argc  != 2)
+	{
+		std::cerr << "Please enter 1 argument" << std::endl;
+		return (1);
+	}
 
-	private:
-		std::string _name;
-};
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif
+	Harl Harl;
+	Harl.complain(argv[1]);
+	return (0);
+}
