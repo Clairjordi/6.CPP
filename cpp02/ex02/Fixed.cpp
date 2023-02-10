@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:59:48 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/09 16:51:12 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:09:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,14 @@ Fixed Fixed::operator*(const Fixed & rhs) const
 Fixed Fixed::operator/(const Fixed & rhs) const
 {
 	Fixed number;
+	if (rhs._fixedComma == 0)
+	{
+		std::cerr << "Division by zero is undefined" << std::endl;
+		return (number);
+	}
 	float f;
 
-	f = _fixedComma / rhs._fixedComma;
+	f = (float)_fixedComma / (float)rhs._fixedComma;
 	number._fixedComma = roundf(f * (1 << _bit));
 
 	return number;
