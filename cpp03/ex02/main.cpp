@@ -6,19 +6,20 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:00:03 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/11 12:06:09 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/11 12:13:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
 	ClapTrap bob("Boby");
-	ClapTrap julie("Juju");
 	ScavTrap robot("Wall·e");
 	ScavTrap android("Erica");
+	FragTrap toto("Tutur");
 
 	std::cout << std::endl;
 	robot.attack(bob.getName());
@@ -26,9 +27,10 @@ int main()
 	bob.beRepaired(10);
 
 	std::cout << std::endl;
-	bob.attack(julie.getName());
-	julie.takeDamage(bob.getAttackDamage());
-	julie.beRepaired(5);
+	toto.attack(android.getName());
+	android.takeDamage(toto.getAttackDamage());
+	toto.beRepaired(2000);
+	toto.highFivesGuys();
 
 	std::cout << std::endl;
 

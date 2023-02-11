@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:59:54 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/11 12:05:47 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/11 12:03:34 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << _name << " has " << _energy << " energy points.~~" << std::endl; 
 	}
 	else
-		std::cout << "Sorry " <<  _name << ", your energy is empty, you can't fix yourself" << std::endl;
+		std::cout << "Sorry " << _name << ", your energy is empty, you can't fix yourself" << std::endl;
 }
