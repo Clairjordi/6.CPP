@@ -6,16 +6,15 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:59:29 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 19:33:50 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:20:52 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
 /* Constructor and Destructor */
-Cure::Cure(void) : AMateria()
+Cure::Cure(void) : AMateria("cure")
 {
-	_type = "cure";
 }
 
 Cure::Cure(const Cure& toCopy) : AMateria(toCopy)
@@ -43,10 +42,7 @@ void Cure::use(ICharacter & target)
 Cure& Cure::operator=(const Cure& toCopy)
 {
 	if (this != &toCopy)
-	{
-		//inutile de copier le type ?
 		_type = toCopy._type;
-	}
 	return *this;
 }
 

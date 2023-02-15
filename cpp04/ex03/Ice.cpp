@@ -6,16 +6,15 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:59:29 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 19:24:16 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:20:46 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
 /* Constructor and Destructor */
-Ice::Ice(void) : AMateria()
+Ice::Ice(void) : AMateria("ice")
 {
-	_type = "ice";
 }
 
 Ice::Ice(const Ice& toCopy) : AMateria(toCopy)
@@ -43,10 +42,7 @@ void Ice::use(ICharacter & target)
 Ice& Ice::operator=(const Ice& toCopy)
 {
 	if (this != &toCopy)
-	{
-		//inutile de copier le type ?
 		_type = toCopy._type;
-	}
 	return *this;
 }
 

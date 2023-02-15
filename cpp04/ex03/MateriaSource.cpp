@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:18:36 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 20:05:28 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:41:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,22 @@
 /* Constructor and Destructor */
 MateriaSource::MateriaSource(void)
 {
+	for (int i = 0; i < 4; i++)
+		_arrayMateria[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& toCopy)
-{
+{	
+	for (int i = 0; i < 4; i++)
+		_arrayMateria[i] = NULL;
+
 	*this = toCopy;
 }
 
 MateriaSource::~MateriaSource(void)
 {
+	for (int i = 0; i < 4; i++)
+		delete _arrayMateria[i];
 }
 
 /* Member Function */
@@ -37,7 +44,8 @@ void MateriaSource::learnMateria(AMateria* m)
 	}
 	if (i < 4)
 		_arrayMateria[i] = m;
-
+	else 
+		delete m;
 }
 
 AMateria* MateriaSource::createMateria(const std::string &type)
@@ -58,9 +66,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& toCopy)
 {
 	if (this != &toCopy)
 	{
-		// delete ?
 		for (int i = 0; i < 4; i++)
-			_arrayMateria[i] = toCopy._arrayMateria[i];
+			if (toCopy._arrayMateria[i])
+				_arrayMateria[i] = toCopy._arrayMateria[i]->clone();
+			else
+				_arrayMateria[i] = NULL;
 	}
 	return *this;
 }

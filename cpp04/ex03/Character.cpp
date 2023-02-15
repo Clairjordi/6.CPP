@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:19:10 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 19:10:03 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:32:18 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,37 @@
 /* Constructor and Destructor */
 Character::Character(void)
 {
+	for (int i = 0; i < 4; i++)
+		_items[i] = NULL;
+	for (int i = 0; i < 42; i++)
+		_trash[i] = NULL;
 }
 
 Character::Character(std::string name) : _name(name)
-{
+{	
+	for (int i = 0; i < 4; i++)
+		_items[i] = NULL;
+	for (int i = 0; i < 42; i++)
+		_trash[i] = NULL;
+
 }
 
 Character::Character(const Character& toCopy)
-{
+{	
+	for (int i = 0; i < 4; i++)
+		_items[i] = NULL;
+	for (int i = 0; i < 42; i++)
+		_trash[i] = NULL;
+
 	*this = toCopy;
 }
 
 Character::~Character(void)
 {
+	for (int i = 0; i < 4; i++)
+		delete _items[i];
+	for (int i = 0; i < 42; i++)
+		delete _trash[i];
 }
 
 /* Member Function */
@@ -38,21 +56,32 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria *m)
 {
-	int i;
-	for (i = 0; i < 4; i++)
-	{
-		if (_items[i] == NULL)
-			break ;
+	if (m != NULL)
+	{	
+		int i;
+		for (i = 0; i < 4; i++)
+		{
+			if (!_items[i])
+				break ;
+		}
+		if (i > 3)
+			return ;
+		_items[i] = m;
 	}
-	if (i > 3)
-		return ;
-	_items[i] = m;
 }
 
 void Character::unequip(int idx)
 {
-	if ((idx >= 0 && idx < 4) && _items[idx] != NULL)
-		_items[idx] = NULL;
+	if ((idx < 0 || idx > 3) || _items[idx] == NULL) 
+			return ;
+	int i;
+	for (i = 0; i < 42; i++)
+	{
+		if (!_trash[i])
+			break ;
+	}
+	_trash[i] = _items[idx];
+	_items[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter &target)
@@ -70,9 +99,12 @@ Character& Character::operator=(const Character& toCopy)
 	{
 		_name = toCopy._name;
 		for (int i = 0; i < 4; i++)
-			delete this->_items[i];
-		for (int i = 0; i < 4; i++)
-			*_items[i] = *toCopy._items[i]->clone();
+		{
+			if (toCopy._items[i] != NULL)
+				_items[i] = toCopy._items[i]->clone();
+			else
+				_items[i] = NULL;
+		}
 	}
 	return *this;
 }
