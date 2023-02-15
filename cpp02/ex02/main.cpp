@@ -33,7 +33,7 @@ int	main()
 	Fixed d(20);
 	Fixed e(1.5f);
 
-	std::cout << "subtraction : c - e = " << c - e << std::endl;
+	std::cout << "substraction : c - e = " << c - e << std::endl;
 	std::cout << "multiplication : c * e = " << c * e << std::endl;
 	std::cout << "division : c / d = " << c / d << std::endl;
 	std::cout << "comparaison d == e is ";
