@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 13:51:47 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/13 18:59:41 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:33:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Dog::Dog(void) : AAnimal()
 
 Dog::Dog(const Dog& toCopy) : AAnimal(toCopy)
 {
+	_brain = new Brain();
 	*this = toCopy;
 }
 

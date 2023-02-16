@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:19:15 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/13 18:22:44 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:22:26 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Cat::Cat(void) : Animal()
 
 Cat::Cat(const Cat& toCopy) : Animal(toCopy)
 {
+	_brain = new Brain();
 	*this = toCopy;
 }
 

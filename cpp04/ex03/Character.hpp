@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:19:11 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 22:39:54 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:35:47 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Character : public ICharacter
 
 	private:
 		std::string _name;
-		AMateria *_items[4];
+		AMateria *_itemsInventory[4];
 		AMateria *_trash[42];
 		
 };

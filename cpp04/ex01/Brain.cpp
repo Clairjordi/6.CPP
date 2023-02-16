@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:00:44 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/13 16:38:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:12:12 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Brain::Brain(void)
 }
 
 Brain::Brain(const Brain& toCopy)
-{
+{	
 	*this = toCopy;
 }
 
@@ -29,9 +29,6 @@ Brain::~Brain(void)
 {
 	std::cout << "Brain destructor called" << std::endl;
 }
-
-/* Member Function */
-
 
 /* Operator */
 Brain& Brain::operator=(const Brain& toCopy)

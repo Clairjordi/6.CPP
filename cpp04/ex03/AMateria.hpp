@@ -6,16 +6,14 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:37:59 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 19:23:28 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:07:47 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include <iostream>
 #include "ICharacter.hpp"
-
 
 class AMateria
 {
@@ -33,7 +31,6 @@ class AMateria
 
 	protected:
 		std::string _type;
-
 };
 
 #endif

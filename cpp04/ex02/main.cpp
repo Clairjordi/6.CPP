@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 14:17:23 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 15:52:16 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:31:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main()
 	for (int i = 0; i < 4; i++) 
 		tabAnimal[i]->makeSound();
 	std::cout << std::endl;
-	for (int i = 4; i >= 0; i--)
+	for (int i = 3; i >= 0; i--)
 		delete tabAnimal[i];
 	delete [] tabAnimal;
 

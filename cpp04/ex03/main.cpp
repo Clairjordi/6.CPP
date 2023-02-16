@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:40:43 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 23:43:21 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:00:45 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,39 +92,6 @@ int	main()
 		delete obj;
 		delete point;
 		delete lol;
-	}
-	std::cout << std::endl;
-	{
-		MateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-
-		MateriaSource* dest = new MateriaSource(*src);
-	
-		ICharacter* me = new Character("me");
-
-		AMateria* tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		tmp = dest->createMateria("ice");
-		me->equip(tmp);
-		tmp = dest->createMateria("cure");
-		me->equip(tmp);
-
-		ICharacter* bob = new Character("bob");
-
-		me->use(0, *bob);
-		me->use(1, *bob);
-		me->use(2, *bob);
-		me->use(3, *bob);
-
-		delete bob;
-		delete me;
-		delete dest;
-		delete src;
-
 	}
 	return 0;
 }

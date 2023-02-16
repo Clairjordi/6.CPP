@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/02/13 18:18:01 by clorcery         ###   ########.fr        #
+#    Updated: 2023/02/16 13:10:21 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 NAME =  animal
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 all: ${NAME}
 

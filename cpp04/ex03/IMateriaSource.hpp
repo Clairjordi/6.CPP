@@ -6,14 +6,13 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:56:03 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 14:57:21 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:07:56 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
 
-#include <iostream>
 #include "AMateria.hpp"
 
 class IMateriaSource 
