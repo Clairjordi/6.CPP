@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:18:36 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/15 23:41:58 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:00:56 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ AMateria* MateriaSource::createMateria(const std::string &type)
 MateriaSource& MateriaSource::operator=(const MateriaSource& toCopy)
 {
 	if (this != &toCopy)
-	{
+	{		
+		for (int i = 0; i < 4; i++)
+			if (_arrayMateria[i])
+				delete _arrayMateria[i];
+			else
+				_arrayMateria[i] = NULL;
 		for (int i = 0; i < 4; i++)
 			if (toCopy._arrayMateria[i])
 				_arrayMateria[i] = toCopy._arrayMateria[i]->clone();

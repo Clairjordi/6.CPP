@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:59:55 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/11 11:30:49 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:09:38 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ClapTrap
 		std::string getName(void) const;
 		int getAttackDamage() const;
 
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 

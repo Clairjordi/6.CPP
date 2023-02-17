@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:19:10 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/16 12:00:19 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:49:22 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ Character& Character::operator=(const Character& toCopy)
 	if (this != &toCopy)
 	{
 		_name = toCopy._name;
+		for (int i = 0; i < 42;i++)
+		{
+			delete _trash[i];
+			_trash[i] = NULL;
+		}
 		for (int i = 0; i < 4; i++)
 			delete _itemsInventory[i];
 		for (int i = 0; i < 4; i++)
