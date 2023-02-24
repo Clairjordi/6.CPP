@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:07:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/17 20:20:50 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:36:55 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 Form& Form::operator=(const Form& toCopy)
 {
 	 if (this != &toCopy)
-	 {
 		_signedForm = toCopy._signedForm;
-	 }
 	 return *this;
 }
 

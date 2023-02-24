@@ -6,20 +6,19 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/17 20:35:09 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:36:14 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include <exception>
 
 /* Constructor and Destructor */
 Bureaucrat::Bureaucrat(void) : _name("noName"), _grade(150)
 {	
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)//, _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -87,9 +86,7 @@ void Bureaucrat::signForm(Form & form)
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& toCopy)
 {
 	if (this != &toCopy)
-	{
 		_grade = toCopy._grade;
-	}
 	return *this;
 }
 

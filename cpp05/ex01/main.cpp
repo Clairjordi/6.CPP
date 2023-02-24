@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:16:20 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/17 20:41:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:46:56 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,11 @@ int main()
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	try
 	{	
-		Bureaucrat humanA("Juju", 10);
+		Bureaucrat humanB("Juju", 10);
+		Bureaucrat humanA(humanB);
 		std::cout << humanA << std::endl;
-		Form cerfa("Jus de carotte", 10, 5);
+		Form toCopy("Earth's friend", 10, 5);
+		Form cerfa(toCopy);
 		std::cout << cerfa << std::endl;
 	
 		humanA.signForm(cerfa);
@@ -106,16 +108,17 @@ int main()
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	try
 	{	
-		Bureaucrat humanA("Juju", 10);
-		Bureaucrat humanB(humanA);
+		Bureaucrat humanA("Hector", 15);
+		Bureaucrat humanB("Juliette", 90);
+		humanA = humanB;
 		std::cout << humanB << std::endl;
-		Form cerfa("Earth's friend", 142, 5);
+		std::cout << humanA << std::endl;
+		Form assignmemt("CERFA", 142, 5);
+		Form cerfa("assignment Form", 12, 1);
+		cerfa = assignmemt;
 		std::cout << cerfa << std::endl;
 	
 		humanA.signForm(cerfa);
-		humanB.signForm(cerfa);
-
-		
 	}
 	catch(std::exception const & e)
 	{
