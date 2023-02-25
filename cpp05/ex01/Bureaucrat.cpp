@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/24 17:36:14 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:01:26 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Bureaucrat::~Bureaucrat(void)
 }
 
 /* Member Function */
-const std::string Bureaucrat::getName() const
+std::string Bureaucrat::getName() const
 {
 	return _name;
 }

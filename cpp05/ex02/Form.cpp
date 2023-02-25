@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:07:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 15:01:46 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:26:45 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,6 @@ int Form::getSignedGrade() const
 int Form::getExecuteGrade() const
 {
 	return _executeGrade;
-}
-
-void Form::beSigned(const Bureaucrat &bureaucrat)
-{
-	if (bureaucrat.getGrade() <= _signedGrade)
-		_signedForm = true;
-	else 
-		throw GradeTooLowException();
 }
 
 /* Operator */

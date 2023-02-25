@@ -6,12 +6,12 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 14:59:38 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:35:14 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include <exception>
+#include "Form.hpp"
 
 /* Constructor and Destructor */
 Bureaucrat::Bureaucrat(void) : _name("noName"), _grade(150)
@@ -63,19 +63,47 @@ void Bureaucrat::gradeLow(int N)
 	_grade += N;
 }
 
+void Bureaucrat::signForm(Form & form) 
+{
+	if (form.getSignedForm() == true)
+	{
+		std::cout << "Form " << form.getNameForm() << " is already signed" << std::endl; 
+		return ;
+	}
+	try
+	{
+		form.beSigned(*this);
+		std::cout << "The bureaucrat " << _name << " signed " << form.getNameForm() << std::endl;
+	}
+	catch (std::exception const & e)
+	{
+		std::cout << "The bureaucrat " << _name << " couldn't sign " << form.getNameForm() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch (std::exception const & e)
+	{
+		std::cout << "The bureaucrat " << _name << " couldn't execute " << form.getNameForm() << " because " << e.what() << std::endl;
+	}
+}
+
 /* Operator */
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& toCopy)
 {
 	if (this != &toCopy)
-	{
 		_grade = toCopy._grade;
-	}
 	return *this;
 }
 
-std::ostream & operator<<(std::ostream & o, const Bureaucrat & i)
+std::ostream & operator<<(std::ostream & o, Bureaucrat const & i)
 {
-	o << "The bureaucrate " << i.getName() << " has a grade of "<< i.getGrade();
+	o << "The bureaucrat " << i.getName() << " has a grade of "<< i.getGrade();
 	return o;
 }
 

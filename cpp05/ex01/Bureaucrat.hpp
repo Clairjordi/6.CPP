@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/24 17:36:26 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:01:26 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat
 		Bureaucrat & operator=(const Bureaucrat & toCopy);
 		~Bureaucrat();
 
-		const std::string getName() const;
+		std::string getName() const;
 		int getGrade() const;
 
 		void gradeUp(int N = 1);

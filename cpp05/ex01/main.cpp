@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:16:20 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/24 17:46:56 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:25:17 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -39,7 +39,7 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -56,7 +56,7 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -80,7 +80,7 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -101,7 +101,7 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 	
 	std::cout << std::endl;
@@ -122,6 +122,6 @@ int main()
 	}
 	catch(std::exception const & e)
 	{
-		std::cout << "ERREUR: " << e.what() << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 }

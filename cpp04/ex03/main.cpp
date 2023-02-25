@@ -64,7 +64,7 @@ int	main()
 		me->equip(tmp);	
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
-		tmp = src->createMateria("ice");
+		tmp = src->createMateria("ice");	
 		me->equip(tmp);
 
 		Character* student = new Character("Thibaud");

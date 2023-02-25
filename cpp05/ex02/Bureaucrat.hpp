@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 14:59:37 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:53:16 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <exception>
 #include <iostream>
+class Form;
 
 class Bureaucrat
 {
@@ -27,8 +28,11 @@ class Bureaucrat
 
 		std::string getName() const;
 		int getGrade() const;
+
 		void gradeUp(int N = 1);
 		void gradeLow(int N = 1);
+		void signForm(Form & form);
+		void executeForm(Form const & form);
 
 	private:
 		const std::string	_name;
@@ -46,6 +50,6 @@ class Bureaucrat
 
 };
 
-std::ostream & operator<<(std::ostream & o, const Bureaucrat & i);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const & i);
 
 #endif

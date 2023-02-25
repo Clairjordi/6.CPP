@@ -58,7 +58,7 @@ AMateria* MateriaSource::createMateria(const std::string &type)
 	}
 	if (i > 3)
 		return 0;
-	return _arrayMateria[i]->clone() ;
+	return _arrayMateria[i]->clone();
 }
 
 /* Operator */
