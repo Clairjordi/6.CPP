@@ -1,6 +1,6 @@
 # CPP
 
-Projet Ecole 42:
+Projet Ecole 42(en cours):
 
 Piscine de c++, apprentissage des bases de ce langage.
 
