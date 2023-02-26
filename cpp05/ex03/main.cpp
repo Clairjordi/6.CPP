@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <exception>
 
 int main()
@@ -85,19 +86,24 @@ int main()
 	std::cout << std::endl;
 	try
 	{
-		Bureaucrat copy("Jojo", 75);
-		//Bureaucrat humanA("Qwerty", 1);
-		//humanA = copy;
-		Bureaucrat humanA(copy);
-
-		ShrubberyCreationForm form("bush");
-		humanA.signForm(form);
-		std::cout << humanA << std::endl;
-
-		humanA.executeForm(form);
+		Form *form;
+		Intern intern;
+		form = intern.makeForm("ShrubberyCreationForm", "Glooves");
+		if (form)
+			delete form;
+		form = intern.makeForm("RobotomyRequestForm", "Willy");
+		if (form)
+			delete form;
+		form = intern.makeForm("noName", "Anyone");
+		if (form)
+			delete form;
+		form = intern.makeForm("PresidentialPardonForm", "Willy");
+		if (form)
+			delete form;
 	}
 	catch(std::exception const & e)
 	{
 		std::cout << "ERROR: " << e.what() << std::endl; 
 	}
+
 }
