@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:16:20 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 19:26:08 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:37:49 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,8 @@ int main()
 	std::cout << std::endl;
 	try
 	{
-		Bureaucrat copy("Jojo", 75);
-		//Bureaucrat humanA("Qwerty", 1);
-		//humanA = copy;
-		Bureaucrat humanA(copy);
-
+		Bureaucrat humanA("Jojo", 75);
 		ShrubberyCreationForm form("bush");
-		humanA.signForm(form);
 		std::cout << humanA << std::endl;
 
 		humanA.executeForm(form);

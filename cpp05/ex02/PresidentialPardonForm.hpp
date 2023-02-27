@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:05:37 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:18:32 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm(const PresidentialPardonForm & toCopy);
 		PresidentialPardonForm & operator=(const PresidentialPardonForm & toCopy);
 		virtual ~PresidentialPardonForm();
-
-		virtual void beSigned(const Bureaucrat & bureaucrat);
 
 		virtual void execute(Bureaucrat const & executor) const;	
 

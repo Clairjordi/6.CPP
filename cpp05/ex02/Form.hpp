@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:07:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 17:26:17 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:06:26 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@ class Form
 		int			getExecuteGrade() const;
 
 
-		virtual void beSigned(const Bureaucrat & bureaucrat) = 0;
+		virtual void beSigned(const Bureaucrat & bureaucrat);
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		
 
-	protected:
+	private:
 		const std::string 	_name;
 		bool				_signedForm;
 		const int			_signedGrade;
 		const int			_executeGrade;
+
+	protected:
 		class GradeTooHighException : public std::exception
 		{
 			public:

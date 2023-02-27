@@ -41,6 +41,11 @@ void PresidentialPardonForm::beSigned(const Bureaucrat &bureaucrat)
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
+	if (getSignedForm() == false)
+	{
+		std::cout << "It's impossible to execute a form didn't signed" << std::endl;
+		return ;
+	}
 	if (_signedForm == true && executor.getGrade() <= _executeGrade)
 	{
 		std::cout << executor.getName() << " executed "<< _name << std::endl;

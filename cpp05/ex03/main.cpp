@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:16:20 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 19:26:08 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:45:30 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int main()
 		std::cout << form << std::endl;
 		std::cout << std::endl;
 
+		humanA.executeForm(form);
 		humanA.signForm(form);
 		humanA.executeForm(form);
 		std::cout << form << std::endl;
@@ -88,18 +89,30 @@ int main()
 	{
 		Form *form;
 		Intern intern;
+		Bureaucrat humanA("Minimichel", 1);
+
 		form = intern.makeForm("ShrubberyCreationForm", "Glooves");
-		if (form)
-			delete form;
-		form = intern.makeForm("RobotomyRequestForm", "Willy");
-		if (form)
-			delete form;
-		form = intern.makeForm("noName", "Anyone");
-		if (form)
-			delete form;
-		form = intern.makeForm("PresidentialPardonForm", "Willy");
-		if (form)
-			delete form;
+		humanA.signForm(*form);
+		humanA.executeForm(*form);
+		delete form;
+
+		std::cout << std::endl;
+		form = intern.makeForm("RobotomyRequestForm", "Willy");	
+		humanA.signForm(*form);
+		humanA.executeForm(*form);
+		delete form;
+
+		std::cout << std::endl;
+		form = intern.makeForm("noName", "Anyone");	
+		 humanA.signForm(*form);
+		 humanA.executeForm(*form);
+		delete form;
+
+		std::cout << std::endl;
+		form = intern.makeForm("PresidentialPardonForm", "Devil");	
+		humanA.signForm(*form);
+		humanA.executeForm(*form);
+		delete form;
 	}
 	catch(std::exception const & e)
 	{

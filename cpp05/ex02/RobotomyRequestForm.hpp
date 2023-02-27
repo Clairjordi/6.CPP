@@ -6,13 +6,14 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:19 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 17:50:52 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:39:39 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include <cstdlib>
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
@@ -24,8 +25,6 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm(const RobotomyRequestForm & toCopy);
 		RobotomyRequestForm & operator=(const RobotomyRequestForm & toCopy);
 		virtual ~RobotomyRequestForm();
-
-		virtual void beSigned(const Bureaucrat & bureaucrat);
 
 		virtual void execute(Bureaucrat const & executor) const;		
 

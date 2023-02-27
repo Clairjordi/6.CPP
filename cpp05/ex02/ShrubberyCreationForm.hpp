@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:20:00 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 17:51:21 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:18:50 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm(const ShrubberyCreationForm & toCopy);
 		ShrubberyCreationForm & operator=(const ShrubberyCreationForm & toCopy);
 		virtual ~ShrubberyCreationForm();
-
-		virtual void beSigned(const Bureaucrat & bureaucrat);
 
 		virtual void execute(Bureaucrat const & executor) const;		
 

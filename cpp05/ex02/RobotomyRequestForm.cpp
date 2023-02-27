@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:18 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:31:28 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:40:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,26 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 }
 
 /* Member Function */
-void RobotomyRequestForm::beSigned(const Bureaucrat &bureaucrat)
-{
-	if (bureaucrat.getGrade() <= _signedGrade)
-		_signedForm = true;
-	else 
-		throw GradeTooLowException();
-}
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (_signedForm == true && executor.getGrade() <= _executeGrade)
+	if (getSignedForm() == false)
 	{
-		std::cout << executor.getName() << " executed "<< _name << std::endl;
-		std::cout << "rrrrrrr...rrrrrrrr" << std::endl;
-		std::cout << _target << " has been successfully robotized 50\% of the time" << std::endl;
+		std::cout << "It's impossible to execute a form didn't signed" << std::endl;
+		return ;
+	}
+	if (getSignedForm() == true && executor.getGrade() <= getExecuteGrade())
+	{
+		std::cout << executor.getName() << " executed "<< getNameForm() << std::endl;
+		
+		srand (time(NULL));
+		if(rand() % 2 == 0)
+		{
+			std::cout << "rrrrrrr...rrrrrrrr" << std::endl;
+			std::cout << _target << " has been successfully robotized 50\% of the time" << std::endl;
+		}
+		else
+			std::cout << _target << " Robotized failed" << std::endl;
 	}
 	else
 		throw GradeTooLowException();
@@ -55,10 +60,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& toCopy)
 {
 	if (this != &toCopy)
-	{
 		_target = toCopy._target;
-		_signedForm = toCopy._signedForm;
-	}
 	return *this;
 }
 

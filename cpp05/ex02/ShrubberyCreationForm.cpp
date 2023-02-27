@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:19:59 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:29:48 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:40:45 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,16 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 }
 
 /* Member Function */
-void ShrubberyCreationForm::beSigned(const Bureaucrat &bureaucrat)
-{
-	if (bureaucrat.getGrade() <= _signedGrade)
-		_signedForm = true;
-	else 
-		throw GradeTooLowException();
-}
-
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (_signedForm == true && executor.getGrade() <= _executeGrade)
+	if (getSignedForm() == false)
 	{
-		std::cout << executor.getName() << " executed "<< _name << std::endl;
+		std::cout << "It's impossible to execute a form didn't signed" << std::endl;
+		return ;
+	}
+	if (getSignedForm() == true && executor.getGrade() <= getExecuteGrade())
+	{
+		std::cout << executor.getName() << " executed "<< getNameForm() << std::endl;
 		std::string name = _target + "_shrubbery";
 		std::ofstream ofs(name.c_str());
 		ofs <<	"        /\\            \n"
@@ -76,10 +73,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& toCopy)
 {
 	if (this != &toCopy)
-	{
 		_target = toCopy._target;
-		_signedForm = toCopy._signedForm;
-	}
 	return *this;
 }
 

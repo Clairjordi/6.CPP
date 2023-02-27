@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:35:14 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:38:10 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ void Bureaucrat::gradeLow(int N)
 
 void Bureaucrat::signForm(Form & form) 
 {
+	Form *formTest = NULL;
+	if (&form == formTest)
+	{
+		std::cout << "This form doesn't exist, so it's impossible to sign" << std::endl; 
+		return ;
+	}
 	if (form.getSignedForm() == true)
 	{
 		std::cout << "Form " << form.getNameForm() << " is already signed" << std::endl; 
@@ -83,6 +89,12 @@ void Bureaucrat::signForm(Form & form)
 
 void Bureaucrat::executeForm(Form const & form)
 {
+	Form *formTest = NULL;
+	if (&form == formTest)
+	{
+		std::cout << "This form doesn't exist, so it's impossible to execute" << std::endl;
+		return ;
+	}
 	try
 	{
 		form.execute(*this);
