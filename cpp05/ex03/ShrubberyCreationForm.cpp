@@ -6,23 +6,23 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:19:59 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:29:48 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:31:46 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 /* Constructor and Destructor */
-ShrubberyCreationForm::ShrubberyCreationForm(void) : Form()
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm()
 {
 	
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	
 }
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& toCopy) : Form(toCopy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& toCopy) : AForm(toCopy)
 {
 	*this = toCopy;
 }

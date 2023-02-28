@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:19 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/27 15:39:39 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:13:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <cstdlib>
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();

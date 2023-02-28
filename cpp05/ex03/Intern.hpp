@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 11:32:48 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/28 11:33:18 by clorcery         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef INTERN_HPP
 #define INTERN_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -15,10 +27,10 @@ class Intern
 		Intern & operator=(const Intern & toCopy);
 		~Intern();
 		
-		Form* makeForm(std::string nameForm, std::string targetForm);
+		AForm* makeForm(std::string nameForm, std::string targetForm);
 
 	private:
-		Form* createForm(const std::string target, int i);
+		AForm* createForm(const std::string target, int i);
 
 };
 

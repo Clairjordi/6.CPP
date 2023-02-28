@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:07:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 17:26:17 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:28:36 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <exception>
 #include <iostream>
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	public:
-		Form();
-		Form(const std::string name, const int signedGrade, const int executeGrade);
-		Form(const Form & toCopy);
-		Form & operator=(const Form & toCopy);
-		virtual ~Form();
+		AForm();
+		AForm(const std::string name, const int signedGrade, const int executeGrade);
+		AForm(const AForm & toCopy);
+		AForm & operator=(const AForm & toCopy);
+		virtual ~AForm();
 
 		std::string 	getNameForm() const;
 		bool		getSignedForm() const;
@@ -53,6 +53,6 @@ class Form
 		};
 };
 
-std::ostream & operator<<(std::ostream & o, const Form & i);
+std::ostream & operator<<(std::ostream & o, const AForm & i);
 
 #endif

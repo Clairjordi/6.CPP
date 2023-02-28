@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 15:53:16 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:14:59 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <exception>
 #include <iostream>
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -31,8 +31,8 @@ class Bureaucrat
 
 		void gradeUp(int N = 1);
 		void gradeLow(int N = 1);
-		void signForm(Form & form);
-		void executeForm(Form const & form);
+		void signForm(AForm & form);
+		void executeForm(AForm const & form);
 
 	private:
 		const std::string	_name;

@@ -6,12 +6,12 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:35:14 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:14:52 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /* Constructor and Destructor */
 Bureaucrat::Bureaucrat(void) : _name("noName"), _grade(150)
@@ -63,7 +63,7 @@ void Bureaucrat::gradeLow(int N)
 	_grade += N;
 }
 
-void Bureaucrat::signForm(Form & form) 
+void Bureaucrat::signForm(AForm & form) 
 {
 	if (form.getSignedForm() == true)
 	{
@@ -81,7 +81,7 @@ void Bureaucrat::signForm(Form & form)
 	}
 }
 
-void Bureaucrat::executeForm(Form const & form)
+void Bureaucrat::executeForm(AForm const & form)
 {
 	try
 	{

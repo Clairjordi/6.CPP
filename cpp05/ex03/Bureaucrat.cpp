@@ -6,12 +6,11 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:08:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/27 14:38:10 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:33:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 /* Constructor and Destructor */
 Bureaucrat::Bureaucrat(void) : _name("noName"), _grade(150)
@@ -63,9 +62,9 @@ void Bureaucrat::gradeLow(int N)
 	_grade += N;
 }
 
-void Bureaucrat::signForm(Form & form) 
+void Bureaucrat::signForm(AForm & form) 
 {
-	Form *formTest = NULL;
+	AForm *formTest = NULL;
 	if (&form == formTest)
 	{
 		std::cout << "This form doesn't exist, so it's impossible to sign" << std::endl; 
@@ -87,9 +86,9 @@ void Bureaucrat::signForm(Form & form)
 	}
 }
 
-void Bureaucrat::executeForm(Form const & form)
+void Bureaucrat::executeForm(AForm const & form)
 {
-	Form *formTest = NULL;
+	AForm *formTest = NULL;
 	if (&form == formTest)
 	{
 		std::cout << "This form doesn't exist, so it's impossible to execute" << std::endl;

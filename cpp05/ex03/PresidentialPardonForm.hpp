@@ -6,17 +6,17 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:05:37 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:32:25 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm();

@@ -6,13 +6,13 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/02/25 18:02:22 by clorcery         ###   ########.fr        #
+#    Updated: 2023/02/28 11:00:16 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp \
 	   Bureaucrat.cpp \
-	   Form.cpp \
+	   AForm.cpp \
 	   ShrubberyCreationForm.cpp \
 	   RobotomyRequestForm.cpp \
 	   PresidentialPardonForm.cpp

@@ -6,22 +6,22 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:34 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/27 15:40:47 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:21:31 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
 /* Constructor and Destructor */
-PresidentialPardonForm::PresidentialPardonForm(void) : Form()
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& toCopy) : Form(toCopy)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& toCopy) : AForm(toCopy)
 {
 	*this = toCopy;
 }

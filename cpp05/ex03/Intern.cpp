@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 11:32:45 by clorcery          #+#    #+#             */
+/*   Updated: 2023/02/28 11:33:17 by clorcery         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "Intern.hpp"
 
@@ -17,7 +29,7 @@ Intern::~Intern(void)
 
 /* Member Function */
 
-Form* Intern::createForm(const std::string target, int i)
+AForm* Intern::createForm(const std::string target, int i)
 {
 	if (i == 0)
 		return new ShrubberyCreationForm(target);
@@ -28,9 +40,9 @@ Form* Intern::createForm(const std::string target, int i)
 }
 
 
-Form* Intern::makeForm(std::string nameForm, std::string targetForm)
+AForm* Intern::makeForm(std::string nameForm, std::string targetForm)
 {
-	Form *form;
+	AForm *form;
 	std::string tabForm[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	for (int i = 0; i < 3; i++)
 	{

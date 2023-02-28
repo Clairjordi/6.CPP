@@ -6,12 +6,12 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:16:20 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/27 15:45:30 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:33:44 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -87,7 +87,7 @@ int main()
 	std::cout << std::endl;
 	try
 	{
-		Form *form;
+		AForm *form;
 		Intern intern;
 		Bureaucrat humanA("Minimichel", 1);
 

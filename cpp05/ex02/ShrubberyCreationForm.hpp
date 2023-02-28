@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:20:00 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/27 15:18:50 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:10:25 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include <fstream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
 	public:
 		ShrubberyCreationForm();

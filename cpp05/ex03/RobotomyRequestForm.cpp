@@ -6,22 +6,22 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:44:18 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/25 18:31:28 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:32:08 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 /* Constructor and Destructor */
-RobotomyRequestForm::RobotomyRequestForm(void) : Form()
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& toCopy) : Form(toCopy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& toCopy) : AForm(toCopy)
 {
 	*this = toCopy;
 }
