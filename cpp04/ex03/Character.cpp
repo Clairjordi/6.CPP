@@ -65,7 +65,10 @@ void Character::equip(AMateria *m)
 				break ;
 		}
 		if (i > 3)
+		{
+			delete m;
 			return ;
+		}
 		_itemsInventory[i] = m;
 	}
 }

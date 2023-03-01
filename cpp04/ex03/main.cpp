@@ -66,6 +66,8 @@ int	main()
 		me->equip(tmp);
 		tmp = src->createMateria("ice");	
 		me->equip(tmp);
+		tmp = src->createMateria("ice");	
+		me->equip(tmp);
 
 		Character* student = new Character("Thibaud");
 
@@ -87,7 +89,6 @@ int	main()
 
 		delete src;
 		delete me;
-		delete tmp;
 		delete student;
 		delete obj;
 		delete point;
