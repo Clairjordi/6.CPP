@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:21:01 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/10 12:12:18 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:05:14 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main()
 	std::cout << std::endl;
 	
 	//additional tests
-	Fixed c(30);
+	Fixed c(2);
 	Fixed d(20);
-	Fixed e(1.5f);
+	Fixed e(1.2f);
 
 	std::cout << "substraction : c - e = " << c - e << std::endl;
 	std::cout << "multiplication : c * e = " << c * e << std::endl;

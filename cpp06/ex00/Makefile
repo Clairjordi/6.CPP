@@ -6,18 +6,18 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/03/01 19:54:42 by clorcery         ###   ########.fr        #
+#    Updated: 2023/03/02 11:26:45 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp \
-	   Serializer.cpp
+	   ScalarConverter.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
 NAME =  converter
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 all: ${NAME}
 
