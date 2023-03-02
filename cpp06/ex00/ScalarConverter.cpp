@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:55:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/02 20:03:57 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:32:58 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 			std::cout << "char   : " << static_cast<char>(f) << std::endl;
 		std::cout << "int : " << static_cast<int>(f) << std::endl;
 	
-		std::cout << "float  : " << /*static_cast<float>(f)*/ f << "f" << std::endl;
+		std::cout << "float  : " << f << "f" << std::endl;
 		std::cout << "double  : " << static_cast<double>(f) << std::endl;
 	}
 	if (type == "d")
@@ -120,14 +120,26 @@ void convertLiterals(std::string toConvert, std::string type)
 
 bool checkOverflow(std::string strToConvert, std::string type)
 {
+	//gerer les overflow de float et double -- ok a reorganiser !!
 	char *endptr;
 	double num = strtod(strToConvert.c_str(), &endptr);
-	if (errno == ERANGE && num == HUGE_VAL)
+	if (errno == ERANGE)
 		return false;
 	if (type == "i" && num <= std::numeric_limits<int>::max() && num >= std::numeric_limits<int>::min())
 		return true;
-	if (type == "f" && num <= std::numeric_limits<float>::max() && num >= std::numeric_limits<float>::min())
+	if (type == "f")
+	{
+		std::cout << "ok" << std::endl;
+		char *endptrs;
+		float numFloat = strtof(strToConvert.c_str(), &endptrs);
+		if (errno == ERANGE) 
+		{
+			std::cout << "lol" << std::endl;
+			return false;
+		}
+		if (numFloat <= std::numeric_limits<float>::max() && numFloat >= std::numeric_limits<float>::min())
 		return true;
+	}
 	if (type == "d" && num <= std::numeric_limits<double>::max() && num >= std::numeric_limits<double>::min())
 		return true;
 	return false;
@@ -168,8 +180,8 @@ std::string checkParsing(std::string strToConvert)
 		if (checkOverflow(strToConvert, "f") == true)
 			return "f";
 	}
-	if (checkOverflow(strToConvert, "d") == true)
-		return "d";
+	// if (checkOverflow(strToConvert, "d") == true)
+	// 	return "d";
 	return "";
 }
 
