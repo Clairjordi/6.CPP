@@ -25,6 +25,7 @@ int main()
 	identify(randPtr);
 	delete randPtr;
 	}
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	{
 	randPtr = generate();
 	Base &randRef = *randPtr;

@@ -13,7 +13,6 @@
 #include "ScalarConverter.hpp"
 
 /* Member Function */
-
 std::string checkPseudoLiterals(std::string literals)
 {
 	std::string tabLiterals[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
@@ -57,6 +56,8 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 	std::cout.setf(std::ios::fixed);
 	int idx = toConvert.find(".", 0) + 1;
 	int size = toConvert.size() - idx;
+	if (size == 0)
+		size = 1;
 	if (type == "f")
 	{	
 		std::cout.precision(size - 1);
@@ -157,7 +158,7 @@ bool	checkFloatDouble(std::string str)
 {
 	std::string::size_type firstPoint = 0;
 
-	for (int i = 0; i < str[i] ; i++)
+	for (size_t i = 0; i < str.size() ; i++)
 	{
 		if (i == 0 && (str[i] == '+' || str[i] == '-'))
 				i = 1;
@@ -200,7 +201,7 @@ std::string checkParsing(std::string strToConvert)
 		{
 			if (checkOverflow(strToConvert, "i") == true)
 				return "i";
-			return "Bad number";
+			return "Out of range";
 		}
 	}
 	if (checkFloatDouble(strToConvert) == false)
@@ -214,7 +215,7 @@ std::string checkParsing(std::string strToConvert)
 	else	
 		if (checkOverflow(strToConvert, "d") == true)
 			return "d";
-	return "Bad number";
+	return "Out of range";
 }
 
 void ScalarConverter::convert(std::string toConvert)

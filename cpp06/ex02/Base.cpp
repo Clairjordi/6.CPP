@@ -26,13 +26,13 @@ Base * generate(void)
 	switch (rand() % 3)
 	{
 		case 0:
-			std::cout << "<Ptr> The type is : A class" << std::endl;
+			std::cout << "The type is : A class" << std::endl;
 			return new A;
 		case 1:
-			std::cout << "<Ptr> The type is : B class" << std::endl;
+			std::cout << "The type is : B class" << std::endl;
 			return new B;
 		case 2:
-			std::cout << "<Ptr> The type is : C class" << std::endl;
+			std::cout << "The type is : C class" << std::endl;
 			return new C;
 		default:
 			return NULL;
