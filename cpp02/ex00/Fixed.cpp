@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:59:48 by clorcery          #+#    #+#             */
-/*   Updated: 2023/02/09 17:46:20 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:02:03 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Fixed& Fixed::operator=(const Fixed& toCopy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &toCopy)
-		_fixedComma = toCopy.getRawBits();
+		_fixedComma = toCopy._fixedComma;//getRawBits();
 	return (*this);	
 }
 

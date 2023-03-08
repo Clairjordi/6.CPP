@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:06:27 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/01 19:50:54 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:59:29 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main()
 	}
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	{
-	randPtr = generate();
-	Base &randRef = *randPtr;
+	//randPtr = generate();
+	Base &randRef = *generate();//*randPtr;
 	identify(randRef);
 	delete randPtr;
 	}

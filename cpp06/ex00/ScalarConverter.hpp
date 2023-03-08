@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:55:39 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/07 18:25:36 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:35:00 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,9 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <string>
-#include <cctype>
-//#include <cstdlib>
 #include <stdlib.h>
-#include <iomanip>
 #include <limits>
 #include <cerrno>
-#include <errno.h>
-#include <cmath>
 
 class ScalarConverter
 {

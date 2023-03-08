@@ -6,14 +6,14 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:55:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/07 19:40:18 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:38:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 /* Member Function */
-std::string checkPseudoLiterals(std::string literals)
+static std::string checkPseudoLiterals(std::string literals)
 {
 	std::string tabLiterals[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
 	int i;
@@ -29,10 +29,9 @@ std::string checkPseudoLiterals(std::string literals)
 	if (i < 6)
 		return "d";
 	return "";
-
 }
 
-void convertPseudoLitterals(std::string toConvert, std::string pseudoLiterals)
+static void convertPseudoLitterals(std::string toConvert, std::string pseudoLiterals)
 {
 	if (pseudoLiterals == "f")
 	{
@@ -51,7 +50,7 @@ void convertPseudoLitterals(std::string toConvert, std::string pseudoLiterals)
 	}
 }
 
-void convertLiteralsFloatDouble(std::string toConvert, std::string type)
+static void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 {
 	std::cout.setf(std::ios::fixed);
 	int idx = toConvert.find(".", 0) + 1;
@@ -59,7 +58,9 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 	if (size == 0)
 		size = 1;
 	if (type == "f")
-	{	
+	{		
+		if (size == 1)
+			size = 2;
 		std::cout.precision(size - 1);
 
 		char *endptr;
@@ -70,7 +71,7 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 		else if (!isprint(f))
 			std::cout << "char   : no displayable" << std::endl;
 		else 
-			std::cout << "char   : " << static_cast<char>(f) << std::endl;
+			std::cout << "char   : '" << static_cast<char>(f) << "'"  << std::endl;
 
 		if (f <= std::numeric_limits<int>::max() && f >= std::numeric_limits<int>::min())
 			std::cout << "int : " << static_cast<int>(f) << std::endl;
@@ -92,7 +93,7 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 		else if (!isprint(d))
 			std::cout << "char   : no displayable" << std::endl;
 		else 
-			std::cout << "char   : " << static_cast<char>(d) << std::endl;
+			std::cout << "char   : '" << static_cast<char>(d) << "'" << std::endl;
 
 		if (d <= std::numeric_limits<int>::max() && d >= std::numeric_limits<int>::min())
 			std::cout << "int : " << static_cast<int>(d) << std::endl;
@@ -108,13 +109,13 @@ void convertLiteralsFloatDouble(std::string toConvert, std::string type)
 	}
 }
 
-void convertLiterals(std::string toConvert, std::string type)
+static void convertLiterals(std::string toConvert, std::string type)
 {
 	std::cout.setf(std::ios::fixed);
 	std::cout.precision(1);
 	if (type == "c")
 	{
-		std::cout << "char   : " << toConvert[0] << std::endl;
+		std::cout << "char   : '" << toConvert[0] << "'" << std::endl;
 		std::cout << "int    : " << static_cast<int>(toConvert[0]) << std::endl;
 		std::cout << "float  : " << static_cast<float>(toConvert[0]) << "f" << std::endl;
 		std::cout << "double : " << static_cast<double>(toConvert[0]) << std::endl;
@@ -128,7 +129,7 @@ void convertLiterals(std::string toConvert, std::string type)
 		else if (!isprint(i))
 			std::cout << "char   : no displayable" << std::endl;
 		else 
-			std::cout << "char   : " << static_cast<char>(i) << std::endl;
+			std::cout << "char   : '" << static_cast<char>(i) << "'" << std::endl;
 
 		std::cout << "int : " << i << std::endl;
 		std::cout << "float  : " << static_cast<float>(i) << "f" << std::endl;
@@ -138,7 +139,7 @@ void convertLiterals(std::string toConvert, std::string type)
 	 	convertLiteralsFloatDouble(toConvert, type);
 }
 
-bool checkOverflow(std::string strToConvert, std::string type)
+static bool checkOverflow(std::string strToConvert, std::string type)
 {
 	char *endptr;
 	double num = strtod(strToConvert.c_str(), &endptr);
@@ -154,9 +155,10 @@ bool checkOverflow(std::string strToConvert, std::string type)
 	return false;
 }
 
-bool	checkFloatDouble(std::string str)
+static bool	checkFloatDouble(std::string str)
 {
 	std::string::size_type firstPoint = 0;
+	bool digit = false;
 
 	for (size_t i = 0; i < str.size() ; i++)
 	{
@@ -168,7 +170,12 @@ bool	checkFloatDouble(std::string str)
 			return false;
 		if (firstPoint == 0)
 			firstPoint = str.find(".", 0);
+		if (digit == false && isdigit(str[i]) == true)
+			digit = true;
+
 	}
+	if (digit == false)
+		return false;
 	if (firstPoint == std::string::npos)
 		return false;
 	std::string::size_type otherPoint = str.find(".", firstPoint + 1);
@@ -177,10 +184,8 @@ bool	checkFloatDouble(std::string str)
 	return true;
 }
 
-std::string checkParsing(std::string strToConvert)
+static std::string checkParsing(std::string strToConvert)
 {
-	if (strToConvert == "")
-		return "Bad argument";
 	if (strToConvert.size() == 1)
 	{
 		if (isdigit(strToConvert[0]) == 0)

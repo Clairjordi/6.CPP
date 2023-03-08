@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:00:14 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/01 17:52:23 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:40:42 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ int	main()
 {
 	Data *dataPtr;
 	Data data;
-	uintptr_t unsInt;
+	uintptr_t serializeValue = 0;
 
 	// init
 	data.nb = 3;
 	dataPtr = &data;
-	std::cout << "data adress : " << dataPtr << " : nb = " << data.nb << std::endl;
+	std::cout << "Adress of data : " << &data << std::endl;
 
 	// get adress -> uintptr
-	unsInt = Serializer::serialize(dataPtr);
-	std::cout << "unsInt adress (through by serialize function) : " << unsInt << " -> nb = " << data.nb << " / convert in hexa = "<< std::hex << unsInt <<std::endl;
+	std::cout << "Adress of serializeValue : " << serializeValue << std::endl;
+	serializeValue = Serializer::serialize(dataPtr);
+	std::cout << "serializeValue adress (through by serialize function) : " << serializeValue << " / convert in hexa = " << std::hex << serializeValue << std::endl;
 
 	// print adress -> deserialize( unsint )
-	std::cout << "data adress (through by deserialize function) : " << Serializer::deserialize(unsInt) << " -> nb = " << data.nb << std::endl;
+	std::cout << "data adress (through by deserialize function) : " << Serializer::deserialize(serializeValue) << std::endl;
 	return 0;
 }
