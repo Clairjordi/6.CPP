@@ -6,20 +6,25 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:10:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/09 18:40:48 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:36:32 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "iter.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
-	if (argc != 2)
 	{
-		std::cout << "One argument required" << std::endl;
-		return 1;
+		std::string tab[] = {"A", "lovely", "little", "cat"};
+		iter(tab, 4, &display);
 	}
-	else
-		ScalarConverter::convert(argv[1]);
+	// std::cout << std::endl;
+	// {
+    //
+	// }
+	// std::cout << std::endl;
+	// {
+	// 	
+	// }
 	return 0;
 }

@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 20:10:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/09 18:40:48 by clorcery         ###   ########.fr       */
+/*   Created: 2023/03/09 18:08:38 by clorcery          #+#    #+#             */
+/*   Updated: 2023/03/09 18:36:01 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+template< typename T >
 
-int main(int argc, char **argv)
+void swap(T & a, T & b)
 {
-	if (argc != 2)
-	{
-		std::cout << "One argument required" << std::endl;
-		return 1;
-	}
-	else
-		ScalarConverter::convert(argv[1]);
-	return 0;
+	T tmp = a;
+	a = b;
+	b = tmp;
 }
+
+template< typename T >
+T const & min(const T & x, const T & y)
+{
+	return (x < y ? x : y);
+}
+
+template< typename T >
+T const & max(const T & x, const T & y)
+{
+	return (x > y ? x : y);
+}
+
