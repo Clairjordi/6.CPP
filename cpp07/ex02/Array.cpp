@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 18:57:08 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/10 14:52:02 by clorcery         ###   ########.fr       */
+/*   Created: 2023/03/10 15:07:36 by clorcery          #+#    #+#             */
+/*   Updated: 2023/03/10 15:17:28 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Array.hpp"
 
-template <typename T>
-
-void display(T const & elem)
+/* Constructor and Destructor */
+Array::Array(void) : _n[1](NULL)
 {
-	std::cout << elem << std::endl;
+
 }
 
-template <typename T>
-void iter(T *tab, int size, void (*display)(T const &))
+Array::Array(const Array& toCopy)
 {
-	for (int i = 0; i < size; i++)
-		display(tab[i]);
+
 }
+
+Array::~Array(void)
+{
+}
+
+/* Member Function */
+
+
+/* Operator */
+Array& Array::operator=(const Array& toCopy)
+{
+
+}
+

@@ -22,7 +22,7 @@ Cat::Cat(void) : AAnimal()
 
 Cat::Cat(const Cat& toCopy) : AAnimal(toCopy)
 {
-	_brain = new Brain();
+	_brain = NULL;
 	*this = toCopy;
 }
 
@@ -43,7 +43,10 @@ Cat& Cat::operator=(const Cat& toCopy)
 {
 	if (this != &toCopy)
 	{
+		if (_brain)
+			delete _brain;
 		_type = toCopy._type;
+		_brain = new Brain();
 		*_brain = *toCopy._brain;
 	}
 	return (*this);
