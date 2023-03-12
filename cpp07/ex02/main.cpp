@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:10:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/10 18:15:29 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:22:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int main()
 			std::cout << "[after assignement] : " << std::endl;
 			for (int i = 0; i < 4; i++)
 				std::cout << "array[" << i << "] = " << array[i] << std::endl;
-			std::cout << "tab[4] = " << array[4] << std::endl;
+			std::cout << "array[4] = " << array[4] << std::endl;
 		}
 		catch (std::exception const & e)
 		{
@@ -94,7 +94,7 @@ int main()
 		}
 	}
 	std::cout << std::endl;
-	std::cout << "Test with array with default constructor :" << std::endl;
+	std::cout << "Test with default constructor (array == NULL) :" << std::endl;
 	{
 		try
 		{
@@ -125,7 +125,7 @@ int main()
 		}
 	}
 	std::cout << std::endl;
-	std::cout << "Test with array of char by copy :" << std::endl;
+	std::cout << "Test with array of int by copy :" << std::endl;
 	{
 		try
 		{

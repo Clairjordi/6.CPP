@@ -6,12 +6,16 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/09 18:36:01 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/11 12:40:17 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-template< typename T >
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
+#include <iostream>
+
+template< typename T >
 void swap(T & a, T & b)
 {
 	T tmp = a;
@@ -31,3 +35,4 @@ T const & max(const T & x, const T & y)
 	return (x > y ? x : y);
 }
 
+#endif

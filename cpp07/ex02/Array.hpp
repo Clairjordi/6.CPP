@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:07:37 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/10 18:16:04 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:22:40 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class Array
 		unsigned int _n;
 };
 
-template<typename T>
 /* Constructor and Destructor */
+template<typename T>
 Array<T>::Array(void) : _array(NULL), _n(0)
 {
 }
