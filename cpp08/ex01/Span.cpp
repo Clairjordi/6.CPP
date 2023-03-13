@@ -6,22 +6,20 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:23:44 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/12 19:24:26 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:53:09 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <stdexcept>
 
 /* Constructor and Destructor */
 Span::Span(void)
 {
 }
 
-Span::Span(unsigned int n)
+Span::Span(unsigned int n) : _n(n)
 {
-	if (n >= std::numeric_limits<unsigned int>::max() && n <= std::numeric_limits<unsigned int>::min())
-		throw std::runtime_error("Out of range");
-	_n = n;
 }
 
 Span::Span(const Span& toCopy)
@@ -43,31 +41,46 @@ void Span::addNumber(int number)
 
 void Span::addMultNumber(int size, int *intArray)
 {
-	if (size == 0)
+
+	if (size == 0 || intArray == 0)
 		return ;
-	if (_array.size() > _n)
+	if (_array.size() + size > _n)
 		throw std::runtime_error("Span is full");
 
-	if (intArray == 0 && size != 0)
-	{
-
-		for (int i = 0; i < size; i++)
-			_array.push_back(i + 1);
-		return ;
-	}
-	for (int i = 0; i < size; i++)
-		_array.push_back(intArray[i]);
+	_array.insert(_array.end(), intArray, intArray + size);
 }
 
-// unsigned int Span::shortestSpan() const
-// {
-//
-// }	
-//
-// unsigned int Span::longestSpan() const
-// {
-//
-// }
+unsigned int Span::shortestSpan() const
+{
+	if (_array.size() < 2)
+		throw std::runtime_error("Distance calculation impossible");
+
+	std::vector<int> tmpArray = _array;
+	std::sort(tmpArray.begin(), tmpArray.end());
+
+	unsigned int dist = std::numeric_limits<unsigned int>::max();
+	unsigned int oldDist = 0;
+	for (unsigned long i = 0; i < tmpArray.size() - 1; i++)
+	{
+		oldDist = tmpArray[i + 1] - tmpArray[i];
+		if (oldDist < dist)
+			dist = oldDist;
+	}
+	return dist;
+}	
+
+unsigned int Span::longestSpan() const
+{
+	if (_array.size() < 2)
+		throw std::runtime_error("Distance calculation impossible");
+
+	std::vector<int> tmpArray = _array;
+	std::sort(tmpArray.begin(), tmpArray.end());
+
+	unsigned int dist = tmpArray.back() - tmpArray.front();
+	return dist;
+
+}
 
 std::vector<int> Span::getArray() const
 {
