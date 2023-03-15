@@ -149,6 +149,5 @@ int main()
 			std::cout << "ERREUR: " << e.what() << std::endl;
 		}
 	}
-
 	return 0;
 }

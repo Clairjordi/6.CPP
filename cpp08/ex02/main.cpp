@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:10:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/13 19:55:48 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:37:22 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main()
 	std::cout << "~~~Test with std::stack<int> : ~~~" << std::endl;
 	{
 		MutantStack<int> mstack;
+
+		std::cout << "size of stack  = " << mstack.size() << std::endl;
 
 		mstack.push(5);
 		mstack.push(17);
@@ -33,7 +35,7 @@ int main()
 		mstack.push(5);
 		mstack.push(737);
 		mstack.push(0);
-		
+
 		MutantStack<int>::iterator it = mstack.begin();
 		MutantStack<int>::iterator ite = mstack.end();
 
@@ -41,12 +43,23 @@ int main()
 		--it;
 
 		std::cout << "stack {5, 3, 5, 737, 0} : " << std::endl;
-		while (it != ite)
-		{
-			std::cout << *it << std::endl;
-			++it;
+		try{
+			if (it < mstack.begin() || it > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
 		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+
 		std::stack<int> s(mstack);
+		std::cout << "last element (s - by copy) {5, 3, 5, 737, 0} = " << mstack.top() << std::endl;
+
 	}
 	std::cout << std::endl;
 	std::cout << "~~~Test with std::list : ~~~" << std::endl;
@@ -74,14 +87,22 @@ int main()
 		--it;
 
 		std::cout << "stack {5, 3, 5, 737, 0} : " << std::endl;
-		while (it != ite)
+		try{
+			if (std::distance(mstack.begin(), it) < 0 || std::distance(it, mstack.end()) <= 0)
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
+		}
+		catch(std::exception & e)
 		{
-			std::cout << *it << std::endl;
-			++it;
+			std::cout << "Error : " << e.what() << std::endl;
 		}
 	}
 	std::cout << std::endl;
-	std::cout << "~~~Test with std::stack<char>  : ~~~" << std::endl;
+	std::cout << "~~~Test with std::stack<char> : ~~~" << std::endl;
 	{
 		MutantStack<char> mstack;
 
@@ -100,35 +121,122 @@ int main()
 		mstack.push('r');
 		
 		MutantStack<char>::iterator it = mstack.begin();
-		std::cout << *it << std::endl;
+		std::cout << "begin() {c, h, a, r} = " << *it << std::endl;
 		MutantStack<char>::iterator ite = mstack.end();
 
 		++it;
-
 		std::cout << "stack {c, h, a, r} after ++it : " << std::endl;
-		while (it != ite)
-		{
-			std::cout << *it << std::endl;
-			++it;
+		try{
+			if (it < mstack.begin() || it > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
 		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+
 		--it;
 		std::cout << "stack {c, h, a, r} after --it :  " << std::endl;
-		while (it != ite)
-		{
-			std::cout << *it << std::endl;
-			++it;
+		try{
+			if (it < mstack.begin() || it > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
 		}
-		--it;
-		--it;
-		--it;
-		--it;
-		std::cout << "stack {c, h, a, r} after --it x4:  " << std::endl;
-		while (it != ite)
+		catch(std::exception & e)
 		{
-			std::cout << *it << std::endl;
-			++it;
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+		++it;
+		++it;
+		std::cout << "stack {c, h, a, r} after ++it x2:  " << std::endl;
+		try{
+			if (it < mstack.begin() || it > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
+		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
 		}
 
 	}
+	std::cout << std::endl;
+	std::cout << "~~~Test with std::stack<float> : ~~~" << std::endl;
+	{
+		MutantStack<float> mstack;
+
+		mstack.push(3.4f);
+		mstack.push(7.8f);
+		mstack.push(6.3f);
+
+		std::cout << "last element {3.4f, 7.8f, 6.3f} = " << mstack.top() << std::endl;
+
+		std::cout << "size of stack = " << mstack.size() << std::endl;
+
+
+		MutantStack<float>::iterator it = mstack.begin();
+		MutantStack<float>::iterator ite = mstack.end();
+
+		std::cout << "stack {3.4f, 7.8f, 6.3f} : " << std::endl;
+		try{
+			if (it < mstack.begin() || it > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *it << std::endl;
+				++it;
+			}
+		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+		--ite;
+		--ite;
+		std::cout << "stack {3.4f, 7.8f, 6.3f} after --itex2 : " << std::endl;
+		try{
+			if (ite < mstack.begin() || ite > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *ite << std::endl;
+				++ite;
+			}
+		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+		++ite;
+		std::cout << "stack {3.4f, 7.8f, 6.3f} after ++ite : " << std::endl;
+		try{
+			if (ite < mstack.begin() || ite > mstack.end())
+				throw std::out_of_range("Invalid it");
+			while (it != ite)
+			{
+				std::cout << *ite << std::endl;
+				++ite;
+			}
+		}
+		catch(std::exception & e)
+		{
+			std::cout << "Error : " << e.what() << std::endl;
+		}
+
+	}
+
 	return 0;
 }

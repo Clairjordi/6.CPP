@@ -6,12 +6,11 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 17:23:44 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/13 16:53:09 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:20:08 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <stdexcept>
 
 /* Constructor and Destructor */
 Span::Span(void)

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 14:50:37 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/12 17:22:09 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:55:53 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void easyfind(T container, int n)
 	}
 	catch (std::exception & e)
 	{
-		std::cout << "ERROR: " << e.what() << n << std::endl; 
+		std::cout << e.what() << n << std::endl; 
 	}
 }
 

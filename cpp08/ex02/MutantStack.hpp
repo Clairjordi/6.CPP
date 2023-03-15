@@ -6,13 +6,14 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:39:42 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/13 20:07:57 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:15:47 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
+#include <exception>
 #include <iostream>
 #include <stack>
 
@@ -31,28 +32,9 @@ class MutantStack : public std::stack<T>
 
 };
 
-#endif
-
+/*Constructor and destructor*/
 template <typename T>
 MutantStack<T>::MutantStack()
-{
-}
-
-template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::begin()
-{
-//try & catch exception out of range
-	return this->c.begin();
-}
-
-template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::end()
-{
-	return this->c.end();
-}
-
-template <typename T>
-MutantStack<T>::~MutantStack()
 {
 }
 
@@ -62,9 +44,30 @@ MutantStack<T>::MutantStack(const MutantStack & toCopy)
 	*this = toCopy;
 }
 
+
+template <typename T>
+MutantStack<T>::~MutantStack()
+{
+}
+
+/*Operator*/
 template <typename T>
 MutantStack<T> & MutantStack<T>::operator=(const MutantStack & toCopy)
 {
 	(void) toCopy;
 	return *this;
 }
+
+/*Member fonction*/
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::begin()
+{
+	return this->c.begin();
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end()
+{
+	return this->c.end();
+}
+#endif
