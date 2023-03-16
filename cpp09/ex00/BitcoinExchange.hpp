@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:46:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/15 17:39:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:40:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 #include <iostream>
 #include <map>
+#include <fstream>
 
 class BitcoinExchange
 {
 	public:
 		BitcoinExchange();
-
-		
 		~BitcoinExchange();
+		void recupData(std::ifstream & dataFile)
 
 
 	private:

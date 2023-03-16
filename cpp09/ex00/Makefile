@@ -6,11 +6,12 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 10:44:17 by clorcery          #+#    #+#              #
-#    Updated: 2023/03/15 12:43:18 by clorcery         ###   ########.fr        #
+#    Updated: 2023/03/16 11:16:41 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   BitcoinExchange.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
