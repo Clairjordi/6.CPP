@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:46:33 by clorcery          #+#    #+#             */
-/*   Updated: 2023/03/16 12:40:14 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:59:02 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ BitcoinExchange::~BitcoinExchange(void)
 void BitcoinExchange::recupData(std::ifstream & dataFile)
 {
 	std::string line;
+	std::string date;
+	float value;
+	char delimiteur = ',';
 	
 	while (getline (dataFile, line))
 	{
-		std::string date;
-		float value;
-		char comma;
 		std::istringstream iss(line);
-		std::cout << line << std::endl;
-		if (iss >> date >> comma >> value)
+		if (getline(iss, date, delimiteur) && iss >> value)
 			_data[date] = value;
-		line.clear();
 	}
 
 
