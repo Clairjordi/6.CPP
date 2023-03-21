@@ -17,36 +17,36 @@
 #include <map>
 #include <fstream>
 #include <sstream>
-#include <exception>
-//#include <time.h>
 #include <ctime>
 #include <limits>
 #include <cmath>
-//#include <cstdlib>
-//#include <algorithm>
 
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(std::ifstream & dataFile, std::ifstream & input);
-		~BitcoinExchange(); // in private ?
+		BitcoinExchange(std::ifstream & dataFile);
+		~BitcoinExchange();
+
+		void bitcoinConversion(std::ifstream & input);
 
 
 	private:
-		BitcoinExchange();
 		std::map<std::string, float> _data;
-		std::ifstream & _input;
+		std::string _errorMsg;
 		
 		void recupData(std::ifstream & dataFile);
-		//void checkFile();
-		std::string _errorMsg;
 				
 		bool checkDate(std::string line, char delimiter);
+		bool checkDay(int year, int month, int day);
 
-		bool checkValue(std::string line);
+		bool checkValue(std::string line, char delimiter);
+		bool checkFloat(std::string str);
+
+		void operation(std::string line);
+
+		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange & toCopy);
 		BitcoinExchange & operator=(const BitcoinExchange & toCopy);
-
 };
 
 #endif

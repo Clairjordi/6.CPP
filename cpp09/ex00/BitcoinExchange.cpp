@@ -13,10 +13,9 @@
 #include "BitcoinExchange.hpp"
 
 /* Constructor and Destructor */
-BitcoinExchange::BitcoinExchange(std::ifstream & dataFile, std::ifstream & input) : _input(input)
+BitcoinExchange::BitcoinExchange(std::ifstream & dataFile)
 {
 	recupData(dataFile);
-	//checkFile(); // faire ce check au moment de la la recherche pour pouvoir multiplier car l'execution du programme ne s'arrete pas
 }
 
 BitcoinExchange::~BitcoinExchange(void)
@@ -42,34 +41,8 @@ static bool checkBissextileYear(int year)
 		return false;
 }
 
-bool BitcoinExchange::checkDate(std::string line, char delimiter)
+bool BitcoinExchange::checkDay(int year, int month, int day)
 {
-	if (line.compare("date,exchange_rate") == 0)
-		return true;
-
-	std::string date;
-	size_t pos;
-	pos = line.find(delimiter);
-	if (pos == std::string::npos)
-	{
-		_errorMsg = "Error: wrong format, missing value  => " + line;
-		return false;
-	}
-	date = line.substr(0, pos);
-	struct tm tm;
-	if (strptime(date.c_str(), "%F", &tm) == NULL)
-	{
-		_errorMsg = "Error: wrong format, invalid date => " + date;
-		return false;
-	}
-
-	int year, month, day;
-	std::istringstream iss(date);
-	char dash = '-';
-
-	iss >> year >> dash >> month >> dash >> day;
-	if ((year < 0 || year > 9999) || (month < 1 || month > 12))
-		return false;
 	if (day >= 1 && day <= 31)
 	{
 		if (month == 2)
@@ -90,33 +63,112 @@ bool BitcoinExchange::checkDate(std::string line, char delimiter)
 				return true;
 		}
 	}
-	_errorMsg = "Error: wrong format, invalid date => " + date;
 	return false;
 }
 
-static bool	checkFloat(std::string str)
+bool BitcoinExchange::checkDate(std::string line, char delimiter)
+{
+	if (line.compare("date,exchange_rate") == 0 || line.compare("date | value") == 0)
+		return true;
+
+	std::string date;
+	size_t pos;
+	pos = line.find(delimiter);
+	if (pos == std::string::npos)
+	{
+		_errorMsg = "bad input  => " + line;
+		return false;
+	}
+	date = line.substr(0, pos);
+	struct tm tm;
+	if (strptime(date.c_str(), "%F", &tm) == NULL)
+	{
+		_errorMsg = "bad input => " + date;
+		return false;
+	}
+
+	int year, month, day;
+	std::istringstream iss(date);
+	char dash = '-';
+
+	iss >> year >> dash >> month >> dash >> day;
+	if ((year < 0 || year > 9999) || (month < 1 || month > 12))
+	{
+		_errorMsg = "bad input => " + date;
+		return false;
+	}
+	if (delimiter == ' ')
+	{
+		if (year < 2009)
+		{
+			_errorMsg = "Bitcoin doesn't exist at this time => " + date;
+			return false;
+		}
+		std::time_t result;
+	
+		result = std::time(NULL);
+		std::tm *now = std::localtime(&result);
+		if (tm.tm_year > now->tm_year)
+		{
+			_errorMsg = "this date is later than today => " + date;
+			return false;
+		}
+		if (tm.tm_year == now->tm_year && tm.tm_mon > now->tm_mon )
+		{
+			_errorMsg = "this date is later than today => " + date;
+			return false;
+		}
+		if (tm.tm_year == now->tm_year && tm.tm_mon == now->tm_mon && tm.tm_mday > now->tm_mday)
+		{
+			_errorMsg = "this date is later than today => " + date;
+			return false;
+		}
+
+	}
+	if (checkDay(year, month, day) == true)
+		return true;
+	_errorMsg = "bad input => " + date;
+	return false;
+}
+
+bool	BitcoinExchange::checkFloat(std::string str)
 {
 	std::string::size_type firstPoint = 0;
 	bool digit = false;
 
 	for (size_t i = 0; i < str.size() ; i++)
 	{
-		if (i == 0 && (str[i] == '+' || str[i] == '-'))
-				return false;
-		if (str[i] != '.' && isdigit(str[i]) == false)
+		if (i == 0 && str[i] == '-')
+		{
+			_errorMsg = "not a positive number.";
 			return false;
+		}
+		if (str[i] != '.' && isdigit(str[i]) == false)
+		{
+			_errorMsg = "not a number.";
+			return false;
+		}
 		if (firstPoint == 0)
 			firstPoint = str.find(".", 0);
 		if (digit == false && isdigit(str[i]))
 			digit = true;
 	}
 	if (digit == false)
+	{
+		_errorMsg = "not a number.";
 		return false;
-	if (firstPoint == std::string::npos)
+	}
+	if (firstPoint == std::string::npos)	
+	{
+		_errorMsg = "not a number.";
 		return false;
+	}
 	std::string::size_type otherPoint = str.find(".", firstPoint + 1);
-	if (otherPoint != std::string::npos)
+	if (otherPoint != std::string::npos)	
+	{
+		_errorMsg = "not a number.";
 		return false;
+	}
 	return true;
 }
 
@@ -139,18 +191,35 @@ static bool checkRange(std::string value, std::string type)
 	return false;
 }
 
-bool BitcoinExchange::checkValue(std::string line)
+bool BitcoinExchange::checkValue(std::string line, char delimiter)
 {
-	if (line.compare("date,exchange_rate") == 0)
+	if (line.compare("date,exchange_rate") == 0 || line.compare("date | value") == 0)
 		return true;
 
 	std::string value;
 	size_t pos;
-	pos = line.find(',');
+	if (delimiter == ' ')
+	{
+		size_t firstSpace = line.find(delimiter);
+		if (line[firstSpace + 1] != '|')
+		{
+			_errorMsg = "bad input  => " + line;
+			return false;
+		}
+
+		pos = line.find(delimiter, firstSpace + 1);
+	if (pos == std::string::npos)
+		{
+			_errorMsg = "bad input  => " + line;
+			return false;
+		}
+	}
+	else
+		pos = line.find(delimiter);
 	value = line.substr(pos + 1);
 	if (value == "")
 	{
-		_errorMsg = "Error: wrong format, missing value  => " + line;
+		_errorMsg = "missing value  => " + line;
 		return false;
 	}
 
@@ -165,28 +234,38 @@ bool BitcoinExchange::checkValue(std::string line)
 	
 		if (checkRange(value, "i") == false)
 		{
-			_errorMsg = "Error: wrong format, invalid value  => " + line;
+			_errorMsg = "too large a number.";
 			return false;
+		}
+		if (delimiter == ' ')
+		{
+			if (atoi(value.c_str()) > 1000)
+			{
+				_errorMsg = "too large a number.";
+				return false;
+			}
 		}
 		return true;
 	}
 	if (checkFloat(value) == false)
-	{
-		_errorMsg = "Error: wrong format, invalid value  => " + line;
 		return false;
-	}
 	else
 	{
 		if (checkRange(value, "f") == false)
 		{
-			_errorMsg = "Error: wrong format, invalid value  => " + line;
+			_errorMsg = "too large a number.";
 			return false;
 		}
 	}
-	//verifier qu'il ai quelque chose apres la virgule
-	//verifier si c'est un float ou un int 
-	//overflow correspondant pour les max only : Error: too large a number.
-	//si negatif : Error: not a positive number.
+	if (delimiter == ' ')
+	{
+		if (atoi(value.c_str()) > 1000)
+		{
+			_errorMsg = "too large a number.";
+			return false;
+		}
+
+	}
 	return true;
 }
 
@@ -194,13 +273,12 @@ void BitcoinExchange::recupData(std::ifstream & dataFile)
 {
 	std::string line;
 	std::string date;
-	int value;
+	float value;
 	char delimiteur = ',';
-	int i = 0;
 
-	while (getline (dataFile, line) && i < 3)
+	while (getline (dataFile, line))
 	{
-		if (checkDate(line, ',') == true && checkValue(line) == true)
+		if (checkDate(line, ',') == true && checkValue(line, ',') == true)
 		{
 			std::istringstream iss(line);
 			if (getline(iss, date, delimiteur) && iss >> value)
@@ -208,32 +286,58 @@ void BitcoinExchange::recupData(std::ifstream & dataFile)
 		}
 		else
 		{
-			std::cout << "File data.csv : " << _errorMsg << " - unregistered line " << std::endl;
+			std::cout << "Error, data.csv : " << _errorMsg << " - unregistered line " << std::endl;
 			_errorMsg = "";
 		}
-		i++;
 	}
 
 //A SUPPRIMER !!!! affichage du contenu de map 
-	std::map<std::string, float>::iterator it;
-	std::map<std::string, float>::iterator ite = _data.end();
-	for (it =_data.begin() ; it != ite; ++it)
-		std::cout << it->first << " " << it->second <<std::endl;
+	// std::map<std::string, float>::iterator it;
+	// std::map<std::string, float>::iterator ite = _data.end();
+	// for (it =_data.begin() ; it != ite; ++it)
+	// 	std::cout << it->first << " " << it->second <<std::endl;
+}
+
+void BitcoinExchange::operation(std::string line)
+{
+	if (line.compare("date | value") == 0)
+		return ;
+	std::string date = line.substr(0, 10);
+	float value = atof((line.substr(13).c_str()));
+	float result = 0;
+	
+	std::map<std::string, float>::iterator search;
+	search = _data.find(date);
+	if (search != _data.end())
+	{
+		result = value * search->second;
+		 std::cout << date << " => " << value << " = " << result << std::endl;
+		 return ;
+	}
+	search = _data.lower_bound(date);
+	if (search != _data.begin())
+		search--;
+	if (search != _data.end())
+		result = value * search->second;
+	std::cout << date << " => " << value << " = " << result << std::endl;
 }
 
 
-// void BitcoinExchange::checkFile()
-// {
-// 	std::string line;
-//  
-//  _errorMsg = "";
-// 	while (getline(_input, line))
-// 	{
-// 		//verification de la date : Annee-mois-jour (dans cet ordre et separer par des tirets / une fois date correcte verifier )
-// 		//pipe separateur correct
-// 		//verification du nombre = float ou int, pas de negatif, verif des float et des int overflow
-// 		//
-// 	}
-// }
+/*Member Function */
+void BitcoinExchange::bitcoinConversion(std::ifstream & input)
+{
+	std::string line;
+
+	while (getline(input, line))
+	{
+		if (checkDate(line, ' ') == true && checkValue(line, ' ') == true)
+			operation(line);
+		else
+		{
+			std::cout << "Error: " << _errorMsg << std::endl;
+			_errorMsg = "";
+		}
+	}
+}
 
 

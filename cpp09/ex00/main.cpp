@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 		std::cout << "Please, put a one file as argument" << std::endl;
 		return 1;
 	}
-	//a mettre dans le constructeur ?
 	std::ifstream file(argv[1]);
 	std::ifstream dataFile("data.csv");
 	if (!file.is_open() || !dataFile.is_open())
@@ -27,12 +26,9 @@ int	main(int argc, char **argv)
 		std::cout << "Open infile failed" << std::endl;
 		return 1;
 	}
-	try{
-		BitcoinExchange data(dataFile, file);
-	}
-	catch (std::exception & e){
-		std::cout << "ERROR : " << e.what() << std::endl;
-	}
+	BitcoinExchange data(dataFile);
+	data.bitcoinConversion(file);
+
 	file.close();
 	dataFile.close();
 	return 0;
