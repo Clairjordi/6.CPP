@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stack>
+#include <cstdlib>
+#include <exception>
 
 class RPN
 {
@@ -11,7 +13,6 @@ class RPN
 		static void execute(std::string expression);
 
 	private:
-		std::stack<int> _operand;
 
 		RPN(void);
 		~RPN(void);
