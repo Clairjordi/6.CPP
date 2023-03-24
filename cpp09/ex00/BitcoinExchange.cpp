@@ -239,9 +239,9 @@ bool BitcoinExchange::checkValue(std::string line, char delimiter)
 		}
 		if (delimiter == ' ')
 		{
-			if (atoi(value.c_str()) > 1000)
+			if (strtof(value.c_str(), NULL) > 1000)
 			{
-				_errorMsg = "too large a number.";
+ 				_errorMsg = "too large a number.";
 				return false;
 			}
 		}
@@ -259,7 +259,7 @@ bool BitcoinExchange::checkValue(std::string line, char delimiter)
 	}
 	if (delimiter == ' ')
 	{
-		if (atoi(value.c_str()) > 1000)
+		if (strtof(value.c_str(), NULL) > 1000)
 		{
 			_errorMsg = "too large a number.";
 			return false;
@@ -290,12 +290,6 @@ void BitcoinExchange::recupData(std::ifstream & dataFile)
 			_errorMsg = "";
 		}
 	}
-
-//A SUPPRIMER !!!! affichage du contenu de map 
-	// std::map<std::string, float>::iterator it;
-	// std::map<std::string, float>::iterator ite = _data.end();
-	// for (it =_data.begin() ; it != ite; ++it)
-	// 	std::cout << it->first << " " << it->second <<std::endl;
 }
 
 void BitcoinExchange::operation(std::string line)
@@ -311,10 +305,15 @@ void BitcoinExchange::operation(std::string line)
 	if (search != _data.end())
 	{
 		result = value * search->second;
-		 std::cout << date << " => " << value << " = " << result << std::endl;
-		 return ;
+		std::cout << date << " => " << value << " = " << result << std::endl;
+		return ;
 	}
 	search = _data.lower_bound(date);
+	if (search == _data.begin())
+	{
+		std::cout << "Error: date is prior then database" << std::endl;
+		return ;
+	}
 	if (search != _data.begin())
 		search--;
 	if (search != _data.end())
