@@ -13,6 +13,6 @@ int main(int argc, char **argv)
 	}
 	catch (std::exception & e)
 	{
-		std::cout << "Error" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }

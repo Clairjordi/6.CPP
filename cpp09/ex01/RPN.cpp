@@ -1,13 +1,13 @@
 #include "RPN.hpp"
 
-bool isOperator(char c)
+static bool isOperator(char c)
 {
 	if (c == '+' || c == '-' || c == '*' || c == '/')
 		return true;
 	return false;
 }
 
-int calculate(int a, int b, char sign)
+static int calculate(int a, int b, char sign)
 {
 	int res = 0;
 	switch(sign)
@@ -43,18 +43,37 @@ int calculate(int a, int b, char sign)
 	return res;
 }
 
+static bool checkOnlyDigit(std::string str)
+{
+	int ope = 0;
+	int digit = 0;
+	for (int i = 0; str[i]; i++)
+	{
+		if (isOperator(str[i]) == true)
+			ope++;
+		if (isdigit(str[i]) == true)
+			digit++;
+	}
+	if (ope == 0 || ope != digit - 1)
+		throw std::logic_error("Error");
+	return true;
+}
+
 
 /* Member Function */
 void RPN::execute(std::string expression)
 {
-	if (expression[0] == ' ')
+	if (expression[0] == ' ' || isOperator(expression[0]) == true || expression == "")
 		throw std::logic_error("Error");
 
+	if (checkOnlyDigit(expression) == false)
+		throw std::logic_error("Error");
 	std::stack<int> _operand;
 	for (int i = 0; expression[i]; i++)
 	{
-		if (isdigit(expression[i]) == true || expression[i] == ' '
-				|| isOperator(expression[i]) == true)
+		if ((isdigit(expression[i]) == true && expression[i + 1] == ' ')
+				|| (isOperator(expression[i]) == true && (expression[i + 1] == '\0' || expression[i + 1] == ' '))
+				|| expression[i] == ' ')
 		{
 			if (isdigit(expression[i]) == true
 					&& (expression[i + 1] == '\0' || expression[i + 1] == ' '))
@@ -71,10 +90,7 @@ void RPN::execute(std::string expression)
 					_operand.pop();
 				}
 				else 
-				{
 					throw std::logic_error("Error");
-				}
-				std::cout << "a et b : " << a << " " << b << " sign = " << expression[i] << std::endl; 
 				int res = calculate(a, b, expression[i]);
 				_operand.push(res);
 			}
@@ -84,9 +100,7 @@ void RPN::execute(std::string expression)
 			}
 		}
 		else
-		{
 			throw std::logic_error("Error");
-		}
 	}
 	std::cout << _operand.top() << std::endl;
 }
