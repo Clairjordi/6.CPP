@@ -6,22 +6,27 @@
 #include <vector>
 #include <cstdlib>
 #include <limits>
-//#include <list>
+#include <algorithm>
+#include <deque>
 
 class PmergeMe
 {
 	public:
 		PmergeMe(char **argv);
 		~PmergeMe(void);
-		//Template<typename T>
 		void sort();
 
 
 	private:
 		std::vector<int> _cvector;
+		std::deque<int>  _cdeque;
 		void checkFillCvector(char **argv);
-		void InsertFusion(size_t threshold);
-		void InsertionSort(size_t size);
+		template <typename T>
+		void mergeInsertSort(T &container);
+		template <typename T>
+		void displayContainer(T &container, char c);
+		int _threshold;
+
 		PmergeMe(void);
 		PmergeMe(const PmergeMe& toCopy);
 		PmergeMe& operator=(const PmergeMe& toCopy);
