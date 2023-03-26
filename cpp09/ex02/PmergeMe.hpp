@@ -4,10 +4,10 @@
 #include <iostream>
 #include <exception>
 #include <vector>
+#include <deque>
 #include <cstdlib>
 #include <limits>
-#include <algorithm>
-#include <deque>
+#include <ctime>
 
 class PmergeMe
 {
@@ -25,7 +25,6 @@ class PmergeMe
 		void mergeInsertSort(T &container);
 		template <typename T>
 		void displayContainer(T &container, char c);
-		int _threshold;
 
 		PmergeMe(void);
 		PmergeMe(const PmergeMe& toCopy);

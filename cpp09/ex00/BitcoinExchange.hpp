@@ -19,7 +19,7 @@
 #include <sstream>
 #include <ctime>
 #include <limits>
-#include <cmath>
+#include <cstdlib>
 
 class BitcoinExchange
 {

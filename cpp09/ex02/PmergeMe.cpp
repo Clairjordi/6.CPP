@@ -14,14 +14,25 @@ PmergeMe::~PmergeMe(void)
 /* Member Function */
 void PmergeMe::sort()
 {
-	// if (_cvector.size() < 11)
-		// _threshold = 3;
-	// else
-		// _threshold = 10;
 	displayContainer(_cvector, 'b');
+
+	clock_t startVector = clock();
 	mergeInsertSort(_cvector);
+	clock_t endVector = clock();
+
+	clock_t startDeque = clock();
 	mergeInsertSort(_cdeque);
+	clock_t endDeque = clock();
+
 	displayContainer(_cvector, 'a');
+
+
+	std::cout << std::endl;
+	double timeVector = ((double) (endVector - startVector) / CLOCKS_PER_SEC);
+	std::cout << "Time to process a range of " << _cvector.size() << " elements with std::vector :" << timeVector * 1000.0 << " ms" << std::endl;
+
+	double timeDeque = ((double) (endDeque - startDeque) / CLOCKS_PER_SEC); 
+	std::cout << "Time to process a range of " << _cdeque.size() << " elements with std::deque :" << timeDeque * 1000.0 << " ms" << std::endl;
 }
 
 /*private Function*/
@@ -31,7 +42,10 @@ void PmergeMe::displayContainer(T &container, char c)
 	if (c == 'b')
 		std::cout << "Before: ";
 	else if (c == 'a')
+	{
+		std::cout << std::endl;
 		std::cout << "After:  ";
+	}
 
 	typename T::iterator it = container.begin();
 	typename T::iterator ite = container.end();
@@ -89,33 +103,37 @@ static void InsertSort(T &container)
 template <typename T>
 static void mergeSort(T &container, T &ct1, T&ct2)
 {
-	//comparer le premier element de ct1 avec le premier element de ct2 
-	//si ct2 < ct1 
-	//alors on container.push_back(ct2.at(ct2.begin()))
-	//a la fin de la boucle on ajoute le premier element de ct1 car c'est lui qui sera le plus petit
-	typename T::iterator i;
-	for (i = ct1.begin(); i != ct1.end() ;i++)
+	typename T::iterator i = ct1.begin();
+	typename T::iterator j = ct2.begin();
+
+	while (i != ct1.end() && j != ct2.end())
 	{
-		while (j != ct2.end()) // faire un while pour garder la pos iterator j et break quand il est arrive a la fin 
-		for (typename T::iterator j = ct2.begin(); j != ct2.end() && ct2.empty() == false ;j++)
+		while (j != ct2.end() && *i > *j)
 		{
-			if (*i > *j)
-			{
-				container.push_back(*j);
-			}
+			container.push_back(*j);
+			j++;
+
 		}
 		container.push_back(*i);
-
+		i++;
 	}
-	//finir de push le ct1 dans container 
-	
+	while (j != ct2.end())
+	{
+		container.push_back(*j);
+		j++;
+	}
+	while (i != ct1.end())
+	{
+		container.push_back(*i);
+		i++;
+	}
 }
 
 template <typename T>
 void PmergeMe::mergeInsertSort(T &container)
 {
 
-	if (container.size() <= 3) //seuil a mettre ?
+	if (container.size() <= 15)
 	{
 		InsertSort(container);
 		return ;

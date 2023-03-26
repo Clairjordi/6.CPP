@@ -7,8 +7,6 @@ int main(int argc, char **argv)
 		std::cout << "Error : please put arguments"<< std::endl;
 		return 1;
 	}
-	if (argc == 2)
-			return 0;
 	try
 	{
 		PmergeMe numbers(++argv);
