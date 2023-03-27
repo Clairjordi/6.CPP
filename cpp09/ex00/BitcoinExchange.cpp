@@ -201,14 +201,13 @@ bool BitcoinExchange::checkValue(std::string line, char delimiter)
 	if (delimiter == ' ')
 	{
 		size_t firstSpace = line.find(delimiter);
-		if (line[firstSpace + 1] != '|')
+		if (line[firstSpace + 1] != '|' || line[firstSpace + 2] == '|')
 		{
 			_errorMsg = "bad input  => " + line;
 			return false;
 		}
-
 		pos = line.find(delimiter, firstSpace + 1);
-	if (pos == std::string::npos)
+		if (pos == std::string::npos)
 		{
 			_errorMsg = "bad input  => " + line;
 			return false;
@@ -264,7 +263,6 @@ bool BitcoinExchange::checkValue(std::string line, char delimiter)
 			_errorMsg = "too large a number.";
 			return false;
 		}
-
 	}
 	return true;
 }

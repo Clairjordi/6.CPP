@@ -35,15 +35,12 @@ static int calculate(int a, int b, char sign)
 			break ;
 		}
 		default:
-		{
 			throw std::logic_error("Error");
-			break ;
-		}
 	}
 	return res;
 }
 
-static bool checkOnlyDigit(std::string str)
+static bool checkDigitOperator(std::string str)
 {
 	int ope = 0;
 	int digit = 0;
@@ -55,7 +52,7 @@ static bool checkOnlyDigit(std::string str)
 			digit++;
 	}
 	if (ope == 0 || ope != digit - 1)
-		throw std::logic_error("Error");
+		return false;
 	return true;
 }
 
@@ -65,7 +62,7 @@ void RPN::execute(std::string expression)
 	if (expression[0] == ' ' || isOperator(expression[0]) == true || expression == "")
 		throw std::logic_error("Error");
 
-	if (checkOnlyDigit(expression) == false)
+	if (checkDigitOperator(expression) == false)
 		throw std::logic_error("Error");
 	std::stack<int> _operand;
 	for (int i = 0; expression[i]; i++)
@@ -74,8 +71,7 @@ void RPN::execute(std::string expression)
 				|| (isOperator(expression[i]) == true && (expression[i + 1] == '\0' || expression[i + 1] == ' '))
 				|| expression[i] == ' ')
 		{
-			if (isdigit(expression[i]) == true
-					&& (expression[i + 1] == '\0' || expression[i + 1] == ' '))
+			if (isdigit(expression[i]) == true && (expression[i + 1] == ' '))
 				_operand.push(atoi(&expression[i]));
 			else if (isOperator(expression[i]) == true
 					&& (expression[i + 1] == '\0' || expression[i + 1] == ' '))
@@ -94,9 +90,7 @@ void RPN::execute(std::string expression)
 				_operand.push(res);
 			}
 			else if(expression[i] == ' ' && (expression[i - 1] == ' ' || expression[i + 1] == '\0'))
-			{
 				throw std::logic_error("Error");
-			}
 		}
 		else
 			throw std::logic_error("Error");
