@@ -21,6 +21,7 @@ class PmergeMe
 	private:
 		std::vector<int> _cvector;
 		std::deque<int>  _cdeque;
+		clock_t			 _startVector;
 		void checkFillCvector(char **argv);
 		template <typename T>
 		void mergeInsertSort(T &container);

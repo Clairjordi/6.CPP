@@ -15,19 +15,22 @@ void PmergeMe::sort()
 {
 	displayContainer(_cvector, 'b');
 
-	clock_t startVector = clock();
 	mergeInsertSort(_cvector);
 	clock_t endVector = clock();
 
 	clock_t startDeque = clock();
-	mergeInsertSort(_cdeque);
-	clock_t endDeque = clock();
+	std::vector<int>::iterator it = _cvector.begin();
+	std::vector<int>::iterator ite = _cvector.end();
+	for (it = _cvector.begin(); it != ite; it++)
+		_cdeque.push_back(*it);	
 
+	mergeInsertSort(_cdeque);
 	displayContainer(_cvector, 'a');
+	clock_t endDeque = clock();
 
 
 	std::cout << std::endl;
-	double timeVector = ((double) (endVector - startVector) / CLOCKS_PER_SEC);
+	double timeVector = ((double) (endVector - _startVector) / CLOCKS_PER_SEC);
 	std::cout << "Time to process a range of " << _cvector.size() << " elements with std::vector :" << timeVector * 1000.0 << " ms" << std::endl;
 
 	double timeDeque = ((double) (endDeque - startDeque) / CLOCKS_PER_SEC); 
@@ -66,6 +69,7 @@ bool checkIsDigit(char *arg)
 
 void PmergeMe::checkFillCvector(char **argv)
 {
+	_startVector = clock();
 	for (int i = 0; argv[i]; i++)
 	{
 		if (argv[i][0] == '\0')
@@ -77,11 +81,6 @@ void PmergeMe::checkFillCvector(char **argv)
 			throw std::logic_error("Out of range");
 		_cvector.push_back(atoi(argv[i]));
 	}
-
-	std::vector<int>::iterator it = _cvector.begin();
-	std::vector<int>::iterator ite = _cvector.end();
-	for (it = _cvector.begin(); it != ite; it++)
-		_cdeque.push_back(*it);	
 }
 
 template <typename T>
