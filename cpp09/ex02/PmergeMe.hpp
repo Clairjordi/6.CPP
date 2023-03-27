@@ -14,6 +14,7 @@ class PmergeMe
 	public:
 		PmergeMe(char **argv);
 		~PmergeMe(void);
+		
 		void sort();
 
 
@@ -29,7 +30,6 @@ class PmergeMe
 		PmergeMe(void);
 		PmergeMe(const PmergeMe& toCopy);
 		PmergeMe& operator=(const PmergeMe& toCopy);
-
 };
 
 #endif

@@ -338,5 +338,3 @@ void BitcoinExchange::bitcoinConversion(std::ifstream & input)
 		}
 	}
 }
-
-

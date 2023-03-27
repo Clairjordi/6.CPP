@@ -59,7 +59,6 @@ static bool checkOnlyDigit(std::string str)
 	return true;
 }
 
-
 /* Member Function */
 void RPN::execute(std::string expression)
 {
