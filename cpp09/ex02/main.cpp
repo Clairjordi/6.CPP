@@ -10,8 +10,7 @@ int main(int argc, char **argv)
 	try
 	{
 		PmergeMe numbers(++argv);
-		numbers.sort();
-		
+		numbers.sort();	
 	}
 	catch(std::exception & e)
 	{

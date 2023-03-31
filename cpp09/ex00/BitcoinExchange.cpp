@@ -80,6 +80,11 @@ bool BitcoinExchange::checkDate(std::string line, char delimiter)
 		return false;
 	}
 	date = line.substr(0, pos);
+	if (date.size() > 10)
+	{
+		_errorMsg = "bad input => " + date;
+		return false; 
+	}
 	struct tm tm;
 	if (strptime(date.c_str(), "%F", &tm) == NULL)
 	{
