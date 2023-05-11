@@ -12,7 +12,7 @@ CPP 02 (3/4) : utilisations des operateurs arithmétiques, assignations, de flux
 CPP 03 (3/4) : héritage entre les classes                                                                                                              
 CPP 04 (4/4) : Polymorphisme, classes abstraites et interfaces                                                                                        
 CPP 05 (4/4) :  Exceptions                                                                                                                              
-CPP 06 (3/3) : Casts - static_cast, reinterpret_cast, dynamic_cast
+CPP 06 (3/3) : Casts - static_cast, reinterpret_cast, dynamic_cast                                                  
 CPP 07 (3/3) : Initiation aux templates                                                                             
 CPP 08 (3/3) : Initiation aux containers                                                                            
 
