@@ -13,8 +13,8 @@ CPP 03 (3/4) : héritage entre les classes
 CPP 04 (4/4) : Polymorphisme, classes abstraites et interfaces                                                                                        
 CPP 05 (4/4) :  Exceptions                                                                                                                              
 CPP 06 (3/3) : Casts - static_cast, reinterpret_cast, dynamic_cast
-CPP 07 (3/3) : Initiation aux templates
-CPP 08 (3/3) : Initiation aux containers
+CPP 07 (3/3) : Initiation aux templates                                                                             
+CPP 08 (3/3) : Initiation aux containers                                                                            
 
 CPP 09 (3/3) : ex00 "./btc [file]" : comparer une base de donnee contenant date,exchange_rate avec un fichier mis en parametre contenant date | value(=nombre de Bitcoin possede) 
 			et rendre en output le resultat exchange_rate * value
