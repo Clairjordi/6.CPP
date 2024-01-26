@@ -1,10 +1,10 @@
 # CPP
 
-Projet Ecole 42(en cours):
+Projet Ecole 42:
 
-Piscine de c++, apprentissage des bases de ce langage.
+Piscine de c++, apprentissage des bases du langage.
 
--Module (exercices faits) : détails des notions apprisent-
+-- Module (exercices faits) : détails des notions apprisent --
 
 CPP 00 (3/3) : notion de classe                                                                                                                  
 CPP 01 (7/7) : utilisation de new/delete - notion et utilisation des réfèrences - lecture et creation de fichier - utilisation des pointeurs sur fonction membres                                                                                                                                               
