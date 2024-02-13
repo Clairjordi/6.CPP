@@ -1,6 +1,6 @@
 # CPP
 
-School Project 42 :
+(6/7) School Project 42 :
 
 C++ piscines, learning the basics of the language.
 
