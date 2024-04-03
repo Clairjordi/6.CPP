@@ -1,6 +1,6 @@
 # CPP
 
-(5/7) School Project 42 :
+(5/7) Common core school project 42 :
 
 C++ piscines, learning the basics of the language.
 
